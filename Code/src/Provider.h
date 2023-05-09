@@ -14,6 +14,7 @@
 #include "Device.h"
 #include <iostream>
 #include <string>
+#include <list>
 #include "Cleaner.h"
 
 //------------------------------------------------------------- Constantes
@@ -59,7 +60,7 @@ public:
     // Contrat :
     //
 
-    
+
 
 //------------------------------------------------------------------ PRIVE
 
@@ -67,12 +68,11 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-String name;
-list<Cleaner> Cleaners;
+  string name;
+  list<int> Cleaners;
 
 };
 
 //-------------------------------- Autres définitions dépendantes de <Provider>
 
 #endif // Provider_H
-

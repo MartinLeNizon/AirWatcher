@@ -1,31 +1,31 @@
 /*************************************************************************
-                           System  -  description
+                           StatisticsServices  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <System> (fichier System.h) ----------------
-#if ! defined ( System_H )
-#define System_H
+//---------- Interface de la classe <StatisticsServices> (fichier StatisticsServices.h) ----------------
+#if ! defined ( StatisticsServices_H )
+#define StatisticsServices_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Device.h"
-#include "User.h"
-#include "Provider.h"
-#include <list>
+#include "Coordinates.h"
+#include "Measurement.h"
+#include "Values.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <System>
+// Rôle de la classe <StatisticsServices>
 //
 //
 //------------------------------------------------------------------------
 
-class System
+class StatisticsServices
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -39,7 +39,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    System & operator = ( const System & unSystem );
+    StatisticsServices & operator = ( const StatisticsServices & unStatisticsServices );
     // Mode d'emploi :
     //
     // Contrat :
@@ -47,19 +47,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    System ( const System & unSystem );
+    StatisticsServices ( const StatisticsServices & unStatisticsServices );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    System ( );
+    StatisticsServices ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~System ( );
+    virtual ~StatisticsServices ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -69,16 +69,14 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+  Values getAverageAirQuality(Measurement measurements[]);
+
 
 //----------------------------------------------------- Attributs protégés
-  list<Device> liste_device;
-  list<User> liste_user;
-  list<Provider> liste_provider;
-
-
+Coordinates position;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <System>
+//-------------------------------- Autres définitions dépendantes de <StatisticsServices>
 
-#endif // System_H
+#endif // StatisticsServices_H

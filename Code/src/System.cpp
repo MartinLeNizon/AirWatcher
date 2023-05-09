@@ -42,14 +42,13 @@ System::System ( const System & unSystem )
 } //----- Fin de System (constructeur de copie)
 
 
-System::System (ifstream src )
+System::System ()
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <System>" << endl;
 #endif
-  ifstream
 
 
 } //----- Fin de System

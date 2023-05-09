@@ -1,30 +1,29 @@
 # /*************************************************************************
-#                               Provider - réalisation
+#                               StatisticsServices - réalisation
 #                              -------------------
 #     début                : 9 mai 2023
 #     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
 #     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
 # *************************************************************************/
 
-//---------- Réalisation de la classe <Provider> (fichier Provider.cpp) ------------
+//---------- Réalisation de la classe <StatisticsServices> (fichier StatisticsServices.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Provider.h"
+#include "StatisticsServices.h"
 #include "Device.h"
-#include "Cleaner.h"
-using namespace std;
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Provider::Méthode ( liste des paramètres )
+// type StatisticsServices::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -32,37 +31,44 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Provider::Provider ( const Provider & unProvider )
+StatisticsServices::StatisticsServices ( const StatisticsServices & unStatisticsServices )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Provider>" << endl;
+    cout << "Appel au constructeur de copie de <StatisticsServices>" << endl;
 #endif
-} //----- Fin de Provider (constructeur de copie)
+} //----- Fin de StatisticsServices (constructeur de copie)
 
 
-Provider::Provider ( )
+StatisticsServices::StatisticsServices ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Provider>" << endl;
+    cout << "Appel au constructeur de <StatisticsServices>" << endl;
 #endif
-} //----- Fin de Provider
+} //----- Fin de StatisticsServices
 
 
-Provider::~Provider ( )
+StatisticsServices::~StatisticsServices ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Provider>" << endl;
+    cout << "Appel au destructeur de <StatisticsServices>" << endl;
 #endif
-} //----- Fin de ~Provider
-
+} //----- Fin de ~StatisticsServices
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+Values getAverageAirQuality(Measurement measurements[]){
+  float avgO3 = 0, avgNO2 = 0,	avgSO2 = 0,	avgPM10 = 0;
+  int nO3 = 0, nNO2 = 0,	nSO2 = 0,	nPM10 = 0;
+  Values moyenne;
+
+
+  return moyenne;
+}

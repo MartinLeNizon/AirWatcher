@@ -12,7 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Device.h"
-#include <string.h>
+#include <string>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -69,10 +69,10 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  String name;
-  String surname;
-  String mail;
-  String password;
+  string name;
+  string surname;
+  string mail;
+  string password;
 
 };
 
