@@ -28,6 +28,16 @@ typedef struct{
     Coordinates center;
     float radius;
 
+    bool isInside(Coordinates coordinates) {
+        bool inside = false;
+        if (coordinates.distanceTo(this.center) <= radius) inside = true;
+        return inside;
+    }
+
+    float getDistanceFromCenter(Coordinates coordinates) {
+        return coordinates.distanceTo(this.center);
+    }
+
 }Zone;
 
 #endif

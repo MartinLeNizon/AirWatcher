@@ -23,15 +23,15 @@ using namespace std;
 // 
 //------------------------------------------------------------------------
 
-typedef struct{
+typedef struct Coordinates{
 
     //---------------------------------------------------------- Attributs
 
     float latitude;
     float longitude;
 
-    float distanceTo(Coordinates coordinates) {
-        return (this.latitude-coordinates.latitude)*(this.latitude-coordinates.latitude) + (this.longitude-coordinates.longitude)*(this.longitude-coordinates.longitude);
+    float distanceTo(struct Coordinates coord) {
+        return (latitude-coord.latitude)*(latitude-coord.latitude) + (longitude-coord.longitude)*(longitude-coord.longitude);
     } 
 
 }Coordinates;
