@@ -69,7 +69,6 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-long name;
 bool blacklisted;
 
 };

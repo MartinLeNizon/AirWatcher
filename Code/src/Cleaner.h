@@ -53,13 +53,13 @@ public:
     // Contrat :
     //
 
-    Cleaner ( );
+    Cleaner();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Cleaner ( );
+    virtual ~Cleaner();
     // Mode d'emploi :
     //
     // Contrat :
@@ -71,7 +71,6 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-long name;
 time_t startTime;
 time_t stopTime;
 

@@ -41,7 +41,7 @@ Cleaner::Cleaner ( const Cleaner & unCleaner )
 } //----- Fin de Cleaner (constructeur de copie)
 
 
-Cleaner::Cleaner ( )
+Cleaner::Cleaner()
 // Algorithme :
 //
 {
@@ -51,7 +51,7 @@ Cleaner::Cleaner ( )
 } //----- Fin de Cleaner
 
 
-Cleaner::~Cleaner ( )
+Cleaner::~Cleaner()
 // Algorithme :
 //
 {
