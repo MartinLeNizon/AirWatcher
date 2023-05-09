@@ -1,28 +1,29 @@
-/*************************************************************************
-                           System  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
+# /*************************************************************************
+#                               PrivateUser - interface
+#                              -------------------
+#     début                : 9 mai 2023
+#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
+#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
+# *************************************************************************/
 
-//---------- Interface de la classe <System> (fichier System.h) ----------------
-#if ! defined ( System_H )
-#define System_H
+//---------- Interface de la classe <PrivateUser> (fichier PrivateUser.h) ----------------
+#if ! defined ( PrivateUser_H )
+#define PrivateUser_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "User.h"
+#include <string.h>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <System>
+// Rôle de la classe <PrivateUser>
 //
 //
 //------------------------------------------------------------------------
 
-class System
+class PrivateUser : public User
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,7 +37,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    System & operator = ( const System & unSystem );
+    PrivateUser & operator = ( const PrivateUser & unPrivateUser );
     // Mode d'emploi :
     //
     // Contrat :
@@ -44,19 +45,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    System ( const System & unSystem );
+    PrivateUser ( const PrivateUser & unPrivateUser );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    System ( );
+    PrivateUser ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~System ( );
+    virtual ~PrivateUser ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,14 +69,11 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  list<Device> liste_device;
-  list<User> liste_user;
-  list<Provider> liste_provider;  
-
-
+  boolean blacklisted;
+  Long points;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <System>
+//-------------------------------- Autres définitions dépendantes de <PrivateUser>
 
-#endif // System_H
+#endif // PrivateUser_H
