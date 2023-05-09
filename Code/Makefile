@@ -38,7 +38,9 @@ $(EXEC): $(OBJ)
 
 $(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h
 
-$(OBJDIR)/main.o: $(SRCDIR)Sensor.h
+$(OBJDIR)/Device.o: $(SRCDIR)Device.h
+
+$(OBJDIR)/main.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h
 
 $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 	@$(CXX) -o $@ -c $< $(CXXFLAGS)
