@@ -1,29 +1,28 @@
 /*************************************************************************
-                           Sensor  -  description
+                           Device  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
-#if ! defined ( Sensor_H )
-#define Sensor_H
+//---------- Interface de la classe <Device> (fichier Device.h) ----------------
+#if ! defined ( Device_H )
+#define Device_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Device.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Sensor>
+// Rôle de la classe <Device>
 //
 //
 //------------------------------------------------------------------------
 
-class Sensor : public Device
+class Device 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -37,7 +36,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Sensor & operator = ( const Sensor & unSensor );
+    Device & operator = ( const Device & unDevice );
     // Mode d'emploi :
     //
     // Contrat :
@@ -45,19 +44,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Sensor ( const Sensor & unSensor );
+    Device ( const Device & unDevice );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Sensor ( );
+    Device ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Sensor ( );
+    virtual ~Device ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -74,7 +73,7 @@ bool blacklisted;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Sensor>
+//-------------------------------- Autres définitions dépendantes de <Device>
 
-#endif // Sensor_H
+#endif // Device_H
 

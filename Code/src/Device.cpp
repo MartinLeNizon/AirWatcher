@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Sensor  -  description
+                           Device  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
+//---------- Réalisation de la classe <Device> (fichier Device.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,51 +15,60 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Sensor.h"
+#include "Device.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Sensor::Méthode ( liste des paramètres )
+// type Device::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 
+//------------------------------------------------- Surcharge d'opérateurs
+Device & Device::operator = ( const Device & unDevice )
+// Algorithme :
+//
+{
+} //----- Fin de operator =
+
+
 //-------------------------------------------- Constructeurs - destructeur
-Sensor::Sensor ( const Sensor & unSensor )
+Device::Device ( const Device & unDevice )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Sensor>" << endl;
+    cout << "Appel au constructeur de copie de <Device>" << endl;
 #endif
-} //----- Fin de Sensor (constructeur de copie)
+} //----- Fin de Device (constructeur de copie)
 
 
-Sensor::Sensor ( )
+Device::Device ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Sensor>" << endl;
+    cout << "Appel au constructeur de <Device>" << endl;
 #endif
-} //----- Fin de Sensor
+} //----- Fin de Device
 
 
-Sensor::~Sensor ( )
+Device::~Device ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Sensor>" << endl;
+    cout << "Appel au destructeur de <Device>" << endl;
 #endif
-} //----- Fin de ~Sensor
+} //----- Fin de ~Device
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+
