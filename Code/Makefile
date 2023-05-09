@@ -36,7 +36,7 @@ endif
 $(EXEC): $(OBJ)
 	@$(CXX) -o $@ $^ $(LDFLAGS)
 
-$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h
+$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h
 
 $(OBJDIR)/Device.o: $(SRCDIR)Device.h
 
