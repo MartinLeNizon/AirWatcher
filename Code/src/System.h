@@ -1,29 +1,28 @@
 /*************************************************************************
-                           Device  -  description
+                           System  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Device> (fichier Device.h) ----------------
-#if ! defined ( Device_H )
-#define Device_H
+//---------- Interface de la classe <System> (fichier System.h) ----------------
+#if ! defined ( System_H )
+#define System_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Coordinates.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Device>
+// Rôle de la classe <System>
 //
 //
 //------------------------------------------------------------------------
 
-class Device 
+class System
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -37,7 +36,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Device & operator = ( const Device & unDevice );
+    System & operator = ( const System & unSystem );
     // Mode d'emploi :
     //
     // Contrat :
@@ -45,19 +44,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Device ( const Device & unDevice );
+    System ( const System & unSystem );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Device ( );
+    System ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Device ( );
+    virtual ~System ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -69,11 +68,14 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-Coordinates position;
+  list<Device> liste_device;
+  list<User> liste_user;
+  list<Provider> liste_provider;
+
+
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Device>
+//-------------------------------- Autres définitions dépendantes de <System>
 
-#endif // Device_H
-
+#endif // System_H
