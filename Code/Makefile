@@ -36,11 +36,18 @@ endif
 $(EXEC): $(OBJ)
 	@$(CXX) -o $@ $^ $(LDFLAGS)
 
-$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h
-
-$(OBJDIR)/Device.o: $(SRCDIR)Device.h
 
 $(OBJDIR)/main.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h
+
+$(OBJDIR)/Device.o: $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
+
+$(OBJDIR)/Cleaner.o: $(SRCDIR)Cleaner.h $(SRCDIR)Device.h
+
+$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h
+
+$(OBJDIR)/Measurement.o: $(SRCDIR)Measurement.h $(SRCDIR)Values.h
+
+$(OBJDIR)/Zone.o: $(SRCDIR)Coordinates.h
 
 $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 	@$(CXX) -o $@ -c $< $(CXXFLAGS)

@@ -1,29 +1,31 @@
 /*************************************************************************
-                           Device  -  description
+                           Measurement  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Device> (fichier Device.h) ----------------
-#if ! defined ( Device_H )
-#define Device_H
+//---------- Interface de la classe <Measurement> (fichier Measurement.h) ----------------
+#if ! defined ( Measurement_H )
+#define Measurement_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Coordinates.h"
+
+
+#include <time.h>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Device>
+// Rôle de la classe <Measurement>
 //
 //
 //------------------------------------------------------------------------
 
-class Device 
+class Measurement 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -37,7 +39,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Device & operator = ( const Device & unDevice );
+    Measurement & operator = ( const Measurement & unMeasurement );
     // Mode d'emploi :
     //
     // Contrat :
@@ -45,19 +47,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Device ( const Device & unDevice );
+    Measurement ( const Measurement & unMeasurement );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Device ( );
+    Measurement ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Device ( );
+    virtual ~Measurement ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -69,11 +71,11 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-Coordinates position;
+time_t date;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Device>
+//-------------------------------- Autres définitions dépendantes de <Measurement>
 
-#endif // Device_H
+#endif // Measurement_H
 
