@@ -30,6 +30,10 @@ typedef struct{
     float latitude;
     float longitude;
 
+    float distanceTo(Coordinates coordinates) {
+        return (this.latitude-coordinates.latitude)*(this.latitude-coordinates.latitude) + (this.longitude-coordinates.longitude)*(this.longitude-coordinates.longitude);
+    } 
+
 }Coordinates;
 
 #endif

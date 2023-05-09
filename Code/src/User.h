@@ -1,28 +1,29 @@
-/*************************************************************************
-                           System  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
+# /*************************************************************************
+#                               User - interface
+#                              -------------------
+#     début                : 9 mai 2023
+#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
+#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
+# *************************************************************************/
 
-//---------- Interface de la classe <System> (fichier System.h) ----------------
-#if ! defined ( System_H )
-#define System_H
+//---------- Interface de la classe <User> (fichier User.h) ----------------
+#if ! defined ( User_H )
+#define User_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Device.h"
+#include <string.h>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <System>
+// Rôle de la classe <User>
 //
 //
 //------------------------------------------------------------------------
 
-class System
+class User
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,7 +37,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    System & operator = ( const System & unSystem );
+    User & operator = ( const User & unUser );
     // Mode d'emploi :
     //
     // Contrat :
@@ -44,19 +45,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    System ( const System & unSystem );
+    User ( const User & unUser );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    System ( );
+    User ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~System ( );
+    virtual ~User ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,14 +69,13 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  list<Device> liste_device;
-  list<User> liste_user;
-  list<Provider> liste_provider;  
-
-
+  String name;
+  String surname;
+  String mail;
+  String password;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <System>
+//-------------------------------- Autres définitions dépendantes de <User>
 
-#endif // System_H
+#endif // User_H
