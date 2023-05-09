@@ -1,10 +1,10 @@
-/*************************************************************************
-                           Sensor  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
+# /*************************************************************************
+#                               Sensor - interface
+#                              -------------------
+#     début                : 9 mai 2023
+#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
+#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
+# *************************************************************************/
 
 //---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
 #if ! defined ( Sensor_H )

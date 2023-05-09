@@ -1,10 +1,10 @@
-/*************************************************************************
-                           Sensor  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
+# /*************************************************************************
+#                               Sensor - réalisation
+#                              -------------------
+#     début                : 9 mai 2023
+#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
+#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
+# *************************************************************************/
 
 //---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
 
@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Sensor.h"
+#
 
 //------------------------------------------------------------- Constantes
 
