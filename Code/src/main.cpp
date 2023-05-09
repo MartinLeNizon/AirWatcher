@@ -18,4 +18,4 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
-// zaaaaaapgihrtea'bprtoejhb'teapobhirtjebhrrtebhrtbhrteghtebh
+//osjfofejfoih
