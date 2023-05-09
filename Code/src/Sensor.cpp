@@ -16,7 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Sensor.h"
-#
+#include "Device.h"
 
 //------------------------------------------------------------- Constantes
 
