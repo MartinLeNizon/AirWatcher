@@ -47,7 +47,19 @@ $(OBJDIR)/Measurement.o: $(SRCDIR)Measurement.h $(SRCDIR)Values.h
 
 $(OBJDIR)/Zone.o: $(SRCDIR)Coordinates.h
 
-$(OBJDIR)/main.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h $(OBJDIR)/Cleaner.h
+$(OBJDIR)/User.o: $(SRCDIR)User.h 
+
+$(OBJDIR)/AgencyEmployee.o: $(SRCDIR)AgencyEmployee.h 
+
+$(OBJDIR)/PrivateUser.o: $(SRCDIR)PrivateUser.h 
+
+$(OBJDIR)/ProviderEmployee.o: $(SRCDIR)ProviderEmployee.h 
+
+$(OBJDIR)/System.o: $(SRCDIR)System.h 
+
+$(OBJDIR)/StatisticsService.o: $(SRCDIR)StatisticsService.h 
+
+$(OBJDIR)/main.o: $(SRCDIR)System.h $(SRCDIR)Device.h
 
 $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 	@$(CXX) -o $@ -c $< $(CXXFLAGS)

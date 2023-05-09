@@ -15,12 +15,12 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "System.h"
 #include "Device.h"
-#include "Sensor.h"
+/*#include "Sensor.h"
 #include "Cleaner.h"
 #include "Measurement.h"
 #include "Values.h"
 #include "Coordinates.h"
-#include "Zone.h"
+#include "Zone.h"*/
 
 //------------------------------------------------------------------ Types
 
