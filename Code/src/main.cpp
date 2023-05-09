@@ -18,12 +18,4 @@ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
-<<<<<<< HEAD
 cout << "test" << endl;
-=======
-int main() {
-  cout << "bonjour je susi hsays" << endl
-
-  return 0;
-}
->>>>>>> 8a708310ec6cb49dbfdd1dc9f258547f293029d9
