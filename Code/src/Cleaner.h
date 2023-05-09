@@ -1,29 +1,31 @@
-/*************************************************************************
-                           Device  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
+# /*************************************************************************
+#                               Cleaner - interface
+#                              -------------------
+#     début                : 9 mai 2023
+#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
+#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
+# *************************************************************************/
 
-//---------- Interface de la classe <Device> (fichier Device.h) ----------------
-#if ! defined ( Device_H )
-#define Device_H
+//---------- Interface de la classe <Cleaner> (fichier Cleaner.h) ----------------
+#if ! defined ( Cleaner_H )
+#define Cleaner_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Coordinates.h"
+#include "Device.h"
+
+#include <time.h>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Device>
+// Rôle de la classe <Cleaner>
 //
 //
 //------------------------------------------------------------------------
 
-class Device 
+class Cleaner : public Device
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -37,7 +39,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Device & operator = ( const Device & unDevice );
+    Cleaner & operator = ( const Cleaner & unCleaner );
     // Mode d'emploi :
     //
     // Contrat :
@@ -45,19 +47,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Device ( const Device & unDevice );
+    Cleaner ( const Cleaner & unCleaner );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Device ( );
+    Cleaner ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Device ( );
+    virtual ~Cleaner ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -69,11 +71,13 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-Coordinates position;
+long name;
+time_t startTime;
+time_t stopTime;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Device>
+//-------------------------------- Autres définitions dépendantes de <Cleaner>
 
-#endif // Device_H
+#endif // Cleaner_H
 
