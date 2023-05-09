@@ -68,6 +68,10 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+  list<Device> liste_device;
+  list<User> liste_user;
+  list<Provider> liste_provider;
+
 
 
 };
