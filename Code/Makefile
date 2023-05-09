@@ -20,7 +20,7 @@ else
 endif
 
 EXECDIR = bin/
-EXEC = $(EXECDIR)main
+EXEC = $(EXECDIR)airwatcher
 SRCDIR = src/
 SRC = $(wildcard $(SRCDIR)*.cpp)
 OBJDIR = obj/
