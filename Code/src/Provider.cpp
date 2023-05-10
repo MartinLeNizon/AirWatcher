@@ -17,6 +17,7 @@
 #include "Provider.h"
 #include "Device.h"
 #include "Cleaner.h"
+#include <string>
 using namespace std;
 
 //------------------------------------------------------------- Constantes

@@ -68,7 +68,6 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  string name;
   list<int> Cleaners;
 
 };
