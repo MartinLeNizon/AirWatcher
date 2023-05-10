@@ -29,12 +29,12 @@ using namespace std;
 //} //----- Fin de Méthode
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-Device & Device::operator = ( const Device & unDevice )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+// //------------------------------------------------- Surcharge d'opérateurs
+// Device & Device::operator = ( const Device & unDevice )
+// // Algorithme :
+// //
+// {
+// } //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -13,7 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Coordinates.h"
 
-#include <string.h>
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -39,11 +39,11 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Device & operator = ( const Device & unDevice );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Device & operator = ( const Device & unDevice );
+    // // Mode d'emploi :
+    // //
+    // // Contrat :
+    // //
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -71,7 +71,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-String name;
+std::string name;
 Coordinates position;
 
 };

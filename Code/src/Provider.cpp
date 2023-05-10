@@ -52,6 +52,32 @@ Provider::Provider ( )
 #endif
 } //----- Fin de Provider
 
+Provider::Provider (string n)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Provider>" << endl;
+#endif
+    name=n;
+} //----- Fin de Provider
+
+void Provider :: ajouterCleaner (Cleaner c){
+    Cleaners.push_back(c);
+}
+
+void Provider :: supprimerCleaner (Cleaner c){
+    Cleaners.remove(c);
+}
+
+string Provider :: getName (){
+    return name;
+}
+
+list<Cleaner> Provider :: getCleaners (){
+    return Cleaners;
+}
+
 
 Provider::~Provider ( )
 // Algorithme :

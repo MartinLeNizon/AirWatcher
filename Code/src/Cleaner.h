@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Device.h"
+#include "Coordinates.h"
 
 #include <time.h>
 
@@ -53,6 +54,8 @@ public:
     // Contrat :
     //
 
+    bool operator==(const Cleaner& c) const;
+
     Cleaner();
     // Mode d'emploi :
     //
@@ -73,6 +76,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 time_t startTime;
 time_t stopTime;
+Coordinates position;
 
 };
 

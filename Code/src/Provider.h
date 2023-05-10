@@ -48,11 +48,18 @@ public:
     // Contrat :
     //
 
-    Provider ( );
+    Provider (string n);
+    Provider ();
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    void ajouterCleaner(Cleaner c);
+    void supprimerCleaner(Cleaner c);
+    string getName();
+    list<Cleaner> getCleaners();
+
 
     virtual ~Provider ( );
     // Mode d'emploi :
@@ -68,7 +75,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  list<int> Cleaners;
+  std::string name;
+  list<Cleaner> Cleaners;
 
 };
 
