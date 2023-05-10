@@ -12,9 +12,11 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Device.h"
+#include "Sensor.h"
 #include "User.h"
 #include "Provider.h"
 #include <list>
+#include <string>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -52,6 +54,8 @@ public:
     //
     // Contrat :
     //
+
+    void initializeSensors(const string nomFic);
 
     System ( );
     // Mode d'emploi :

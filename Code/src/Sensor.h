@@ -51,6 +51,8 @@ public:
     // Contrat :
     //
 
+    Sensor (string nom, Coordinates pos);
+
     Sensor ( );
     // Mode d'emploi :
     //

@@ -11,16 +11,17 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <fstream>
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
 #include "Device.h"
-/*#include "Sensor.h"
+#include "Sensor.h"
 #include "Cleaner.h"
 #include "Measurement.h"
 #include "Values.h"
 #include "Coordinates.h"
-#include "Zone.h"*/
+#include "Zone.h"
 
 //------------------------------------------------------------------ Types
 
@@ -31,6 +32,17 @@ using namespace std;
 //------------------------------------------------------------------- main
 int main(int argc, char * argv[]){
   
+  System s;
+  s.initializeSensors("../../Databases/sensors.csv");
+
+  std::ifstream infile("../../Databases/sensors.csv");
+
+    if (!infile) {
+        std::cerr << "Impossible d'ouvrir le fichier." << std::endl;
+        return 1;
+    }
+
+
 
   return 0;
 }

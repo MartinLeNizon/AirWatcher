@@ -11,13 +11,17 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <iostream>
-#include <fstream>
+
 using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
 #include "Device.h"
+#include "Sensor.h"
+#include <list>
+#include <iostream>
+#include <string>
+#include <fstream>
 
 //------------------------------------------------------------- Constantes
 
@@ -53,6 +57,21 @@ System::System ()
 
 } //----- Fin de System
 
+void System :: initializeSensors(const string nomFic){
+    ifstream fic;
+    fic.open(nomFic);
+    Sensor s;
+
+    if ( fic ) {
+        cout << "coucou \n";
+        while(fic>>s){
+            cout << s <<"\n";
+            liste_device.push_back(s);
+        }
+    } else {
+        cout << "fichier non trouvé" << endl;
+    }
+}
 
 System::~System ( )
 // Algorithme :

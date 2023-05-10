@@ -59,6 +59,37 @@ public:
     // Contrat :
     //
 
+    Device (string nom, Coordinates pos);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    friend istream & operator >>(istream & is, Device &d);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    friend ostream & operator << (ostream & os, const Device &d);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    string getName ();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    Coordinates getCoordinates ();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+
     virtual ~Device ( );
     // Mode d'emploi :
     //

@@ -50,6 +50,14 @@ Sensor::Sensor ( )
 #endif
 } //----- Fin de Sensor
 
+Sensor::Sensor (string nom, Coordinates pos):Device(nom,pos)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Sensor>" << endl;
+#endif
+} //----- Fin de Sensor
 
 Sensor::~Sensor ( )
 // Algorithme :
