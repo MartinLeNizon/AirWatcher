@@ -63,7 +63,7 @@ void System :: initializeSensors(const string nomFic){
     Sensor s;
 
     if ( fic ) {
-        cout << "coucou \n";
+        //cout << "coucou \n";
         while(fic>>s){
             cout << s <<"\n";
             liste_device.push_back(s);
@@ -72,6 +72,23 @@ void System :: initializeSensors(const string nomFic){
         cout << "fichier non trouvé" << endl;
     }
 }
+
+list<Device> System :: getListDevice () const{
+    return liste_device;
+}
+
+void System :: afficherListDevice()const{
+    for (const auto& elem : liste_device) {
+        std::cout << elem << endl;
+    }
+}
+
+void System :: addDevice( const Device & d){
+    //cout << s <<endl;
+    liste_device.push_back(d);
+}
+
+
 
 System::~System ( )
 // Algorithme :

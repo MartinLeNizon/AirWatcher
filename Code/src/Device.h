@@ -77,13 +77,13 @@ public:
     // Contrat :
     //
 
-    string getName ();
+    string getName ()const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    Coordinates getCoordinates ();
+    Coordinates getCoordinates ()const;
     // Mode d'emploi :
     //
     // Contrat :

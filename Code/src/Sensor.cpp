@@ -59,6 +59,16 @@ Sensor::Sensor (string nom, Coordinates pos):Device(nom,pos)
 #endif
 } //----- Fin de Sensor
 
+ostream & operator << (ostream & os,const Sensor &s){
+    string status ="Operational";
+    if(s.blacklisted==true){
+        status = "Not operational";
+    }
+    os <<s.getName()<<";"<<s.position.longitude<<";"<<s.position.latitude<<";"<<status<<";";
+    return os;
+}
+
+
 Sensor::~Sensor ( )
 // Algorithme :
 //

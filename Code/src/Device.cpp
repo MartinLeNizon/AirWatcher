@@ -90,13 +90,15 @@ ostream & operator << (ostream & os,const Device &d){
     return os;
 }
 
-string Device :: getName(){
+string Device :: getName()const{
     return name;
 }
 
-Coordinates Device :: getCoordinates (){
+Coordinates Device :: getCoordinates ()const{
     return position;
 }
+
+
 
 Device::~Device ( )
 // Algorithme :

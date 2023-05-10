@@ -57,6 +57,12 @@ public:
 
     void initializeSensors(const string nomFic);
 
+    list<Device> getListDevice()const;
+
+    void afficherListDevice()const;
+
+    void addDevice(const Device & d);
+
     System ( );
     // Mode d'emploi :
     //
