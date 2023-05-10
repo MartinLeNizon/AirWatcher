@@ -13,6 +13,8 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Coordinates.h"
 
+#include <string>
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -37,11 +39,11 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Device & operator = ( const Device & unDevice );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Device & operator = ( const Device & unDevice );
+    // // Mode d'emploi :
+    // //
+    // // Contrat :
+    // //
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -57,6 +59,37 @@ public:
     // Contrat :
     //
 
+    Device (string nom, Coordinates pos);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    friend istream & operator >>(istream & is, Device &d);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    friend ostream & operator << (ostream & os, const Device &d);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    string getName ()const;
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    Coordinates getCoordinates ()const;
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+
     virtual ~Device ( );
     // Mode d'emploi :
     //
@@ -69,6 +102,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+std::string name;
 Coordinates position;
 
 };

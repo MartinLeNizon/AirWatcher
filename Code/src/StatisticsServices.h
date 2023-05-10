@@ -1,32 +1,31 @@
-# /*************************************************************************
-#                               Cleaner - interface
-#                              -------------------
-#     début                : 9 mai 2023
-#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
-#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
-# *************************************************************************/
+/*************************************************************************
+                           StatisticsServices  -  description
+                             -------------------
+    début                : $DATE$
+    copyright            : (C) $YEAR$ par $AUTHOR$
+    e-mail               : $EMAIL$
+*************************************************************************/
 
-//---------- Interface de la classe <Cleaner> (fichier Cleaner.h) ----------------
-#if ! defined ( Cleaner_H )
-#define Cleaner_H
+//---------- Interface de la classe <StatisticsServices> (fichier StatisticsServices.h) ----------------
+#if ! defined ( StatisticsServices_H )
+#define StatisticsServices_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Device.h"
 #include "Coordinates.h"
-
-#include <time.h>
+#include "Measurement.h"
+#include "Values.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Cleaner>
+// Rôle de la classe <StatisticsServices>
 //
 //
 //------------------------------------------------------------------------
 
-class Cleaner : public Device
+class StatisticsServices
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -40,7 +39,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Cleaner & operator = ( const Cleaner & unCleaner );
+    StatisticsServices & operator = ( const StatisticsServices & unStatisticsServices );
     // Mode d'emploi :
     //
     // Contrat :
@@ -48,21 +47,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Cleaner ( const Cleaner & unCleaner );
+    StatisticsServices ( const StatisticsServices & unStatisticsServices );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    bool operator==(const Cleaner& c) const;
-
-    Cleaner();
+    StatisticsServices ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Cleaner();
+    virtual ~StatisticsServices ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -72,15 +69,14 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+  Values getAverageAirQuality(Measurement measurements[]);
+
 
 //----------------------------------------------------- Attributs protégés
-time_t startTime;
-time_t stopTime;
 Coordinates position;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Cleaner>
+//-------------------------------- Autres définitions dépendantes de <StatisticsServices>
 
-#endif // Cleaner_H
-
+#endif // StatisticsServices_H

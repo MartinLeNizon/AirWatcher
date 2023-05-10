@@ -11,6 +11,8 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <fstream>
+#include <list>
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
@@ -29,7 +31,40 @@ using namespace std;
 //-------------------------------------------------- Déclarations méthodes
 
 //------------------------------------------------------------------- main
+
+// Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste
+
+template <typename T>
+void printList(std::list<T> lst) {
+    for (const auto& elem : lst) {
+        std::cout << elem << endl;
+    }
+    std::cout << std::endl;
+}
+
+
 int main(int argc, char * argv[]){
+  
+  System s;
+  Coordinates c;
+  c.latitude=21;
+  c.longitude=21;
+  Sensor sensor1 = Sensor ("sensor21",c);
+  cout << sensor1 << endl;
+  s.addDevice(sensor1);
+  
+  s.initializeSensors("../../Databases/sensors.csv"); 
+
+  // list<Device> sensors;
+  // sensors.emplace_back("sensor21",c);
+  // for (const auto& sensor : sensors) {
+  //   cout << sensor;
+  // }
+
+
+  //printList(s.getListDevice()); 
+  // s.afficherListDevice();
+
 
 
   return 0;

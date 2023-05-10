@@ -11,13 +11,17 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <iostream>
-#include <fstream>
+
 using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
 #include "Device.h"
+#include "Sensor.h"
+#include <list>
+#include <iostream>
+#include <string>
+#include <fstream>
 
 //------------------------------------------------------------- Constantes
 
@@ -42,17 +46,48 @@ System::System ( const System & unSystem )
 } //----- Fin de System (constructeur de copie)
 
 
-System::System (ifstream src )
+System::System ()
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <System>" << endl;
 #endif
-  ifstream
 
 
 } //----- Fin de System
+
+void System :: initializeSensors(const string nomFic){
+    ifstream fic;
+    fic.open(nomFic);
+    Sensor s;
+
+    if ( fic ) {
+        //cout << "coucou \n";
+        while(fic>>s){
+            cout << s <<"\n";
+            liste_device.push_back(s);
+        }
+    } else {
+        cout << "fichier non trouvé" << endl;
+    }
+}
+
+list<Device> System :: getListDevice () const{
+    return liste_device;
+}
+
+void System :: afficherListDevice()const{
+    for (const auto& elem : liste_device) {
+        std::cout << elem << endl;
+    }
+}
+
+void System :: addDevice( const Device & d){
+    //cout << s <<endl;
+    liste_device.push_back(d);
+}
+
 
 
 System::~System ( )

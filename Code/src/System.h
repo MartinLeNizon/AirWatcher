@@ -11,7 +11,12 @@
 #define System_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Device.h"
+#include "Sensor.h"
+#include "User.h"
+#include "Provider.h"
+#include <list>
+#include <string>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -50,6 +55,14 @@ public:
     // Contrat :
     //
 
+    void initializeSensors(const string nomFic);
+
+    list<Device> getListDevice()const;
+
+    void afficherListDevice()const;
+
+    void addDevice(const Device & d);
+
     System ( );
     // Mode d'emploi :
     //
@@ -70,7 +83,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
   list<Device> liste_device;
   list<User> liste_user;
-  list<Provider> liste_provider;  
+  list<Provider> liste_provider;
 
 
 

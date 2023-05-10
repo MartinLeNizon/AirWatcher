@@ -1,12 +1,12 @@
 # /*************************************************************************
-#                               Sensor - réalisation
+#                               StatisticsServices - réalisation
 #                              -------------------
 #     début                : 9 mai 2023
 #     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
 #     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
 # *************************************************************************/
 
-//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
+//---------- Réalisation de la classe <StatisticsServices> (fichier StatisticsServices.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,7 +15,7 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Sensor.h"
+#include "StatisticsServices.h"
 #include "Device.h"
 
 //------------------------------------------------------------- Constantes
@@ -23,7 +23,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Sensor::Méthode ( liste des paramètres )
+// type StatisticsServices::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -31,54 +31,44 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Sensor::Sensor ( const Sensor & unSensor )
+StatisticsServices::StatisticsServices ( const StatisticsServices & unStatisticsServices )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Sensor>" << endl;
+    cout << "Appel au constructeur de copie de <StatisticsServices>" << endl;
 #endif
-} //----- Fin de Sensor (constructeur de copie)
+} //----- Fin de StatisticsServices (constructeur de copie)
 
 
-Sensor::Sensor ( )
+StatisticsServices::StatisticsServices ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Sensor>" << endl;
+    cout << "Appel au constructeur de <StatisticsServices>" << endl;
 #endif
-} //----- Fin de Sensor
+} //----- Fin de StatisticsServices
 
-Sensor::Sensor (string nom, Coordinates pos):Device(nom,pos)
+
+StatisticsServices::~StatisticsServices ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Sensor>" << endl;
+    cout << "Appel au destructeur de <StatisticsServices>" << endl;
 #endif
-} //----- Fin de Sensor
-
-ostream & operator << (ostream & os,const Sensor &s){
-    string status ="Operational";
-    if(s.blacklisted==true){
-        status = "Not operational";
-    }
-    os <<s.getName()<<";"<<s.position.longitude<<";"<<s.position.latitude<<";"<<status<<";";
-    return os;
-}
-
-
-Sensor::~Sensor ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Sensor>" << endl;
-#endif
-} //----- Fin de ~Sensor
+} //----- Fin de ~StatisticsServices
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+Values getAverageAirQuality(Measurement measurements[]){
+  float avgO3 = 0, avgNO2 = 0,	avgSO2 = 0,	avgPM10 = 0;
+  int nO3 = 0, nNO2 = 0,	nSO2 = 0,	nPM10 = 0;
+  Values moyenne;
+
+
+  return moyenne;
+}

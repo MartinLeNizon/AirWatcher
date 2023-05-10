@@ -1,29 +1,31 @@
 # /*************************************************************************
-#                               Sensor - réalisation
+#                               Provider - réalisation
 #                              -------------------
 #     début                : 9 mai 2023
 #     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
 #     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
 # *************************************************************************/
 
-//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
+//---------- Réalisation de la classe <Provider> (fichier Provider.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Sensor.h"
+#include "Provider.h"
 #include "Device.h"
+#include "Cleaner.h"
+#include <string>
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Sensor::Méthode ( liste des paramètres )
+// type Provider::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -31,52 +33,61 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Sensor::Sensor ( const Sensor & unSensor )
+Provider::Provider ( const Provider & unProvider )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Sensor>" << endl;
+    cout << "Appel au constructeur de copie de <Provider>" << endl;
 #endif
-} //----- Fin de Sensor (constructeur de copie)
+} //----- Fin de Provider (constructeur de copie)
 
 
-Sensor::Sensor ( )
+Provider::Provider ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Sensor>" << endl;
+    cout << "Appel au constructeur de <Provider>" << endl;
 #endif
-} //----- Fin de Sensor
+} //----- Fin de Provider
 
-Sensor::Sensor (string nom, Coordinates pos):Device(nom,pos)
+Provider::Provider (string n)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Sensor>" << endl;
+    cout << "Appel au constructeur de <Provider>" << endl;
 #endif
-} //----- Fin de Sensor
+    name=n;
+} //----- Fin de Provider
 
-ostream & operator << (ostream & os,const Sensor &s){
-    string status ="Operational";
-    if(s.blacklisted==true){
-        status = "Not operational";
-    }
-    os <<s.getName()<<";"<<s.position.longitude<<";"<<s.position.latitude<<";"<<status<<";";
-    return os;
+void Provider :: ajouterCleaner (Cleaner c){
+    Cleaners.push_back(c);
+}
+
+void Provider :: supprimerCleaner (Cleaner c){
+    Cleaners.remove(c);
+}
+
+string Provider :: getName (){
+    return name;
+}
+
+list<Cleaner> Provider :: getCleaners (){
+    return Cleaners;
 }
 
 
-Sensor::~Sensor ( )
+Provider::~Provider ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Sensor>" << endl;
+    cout << "Appel au destructeur de <Provider>" << endl;
 #endif
-} //----- Fin de ~Sensor
+} //----- Fin de ~Provider
+
 
 
 //------------------------------------------------------------------ PRIVE

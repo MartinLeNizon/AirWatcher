@@ -1,32 +1,33 @@
 # /*************************************************************************
-#                               Cleaner - interface
+#                               Provider - interface
 #                              -------------------
 #     début                : 9 mai 2023
 #     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
 #     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
 # *************************************************************************/
 
-//---------- Interface de la classe <Cleaner> (fichier Cleaner.h) ----------------
-#if ! defined ( Cleaner_H )
-#define Cleaner_H
+//---------- Interface de la classe <Provider> (fichier Provider.h) ----------------
+#if ! defined ( Provider_H )
+#define Provider_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Device.h"
-#include "Coordinates.h"
-
-#include <time.h>
+#include <iostream>
+#include <string>
+#include <list>
+#include "Cleaner.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Cleaner>
+// Rôle de la classe <Provider>
 //
 //
 //------------------------------------------------------------------------
 
-class Cleaner : public Device
+class Provider
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -39,34 +40,34 @@ public:
     //
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Cleaner & operator = ( const Cleaner & unCleaner );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
-    Cleaner ( const Cleaner & unCleaner );
+    Provider ( const Provider & unProvider );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    bool operator==(const Cleaner& c) const;
-
-    Cleaner();
+    Provider (string n);
+    Provider ();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Cleaner();
+    void ajouterCleaner(Cleaner c);
+    void supprimerCleaner(Cleaner c);
+    string getName();
+    list<Cleaner> getCleaners();
+
+
+    virtual ~Provider ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+
 
 //------------------------------------------------------------------ PRIVE
 
@@ -74,13 +75,11 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-time_t startTime;
-time_t stopTime;
-Coordinates position;
+  std::string name;
+  list<Cleaner> Cleaners;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Cleaner>
+//-------------------------------- Autres définitions dépendantes de <Provider>
 
-#endif // Cleaner_H
-
+#endif // Provider_H

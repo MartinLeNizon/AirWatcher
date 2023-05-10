@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Cleaner.h"
 #include "Device.h"
+#include <cmath> 
 
 //------------------------------------------------------------- Constantes
 
@@ -38,10 +39,13 @@ Cleaner::Cleaner ( const Cleaner & unCleaner )
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Cleaner>" << endl;
 #endif
+    startTime=unCleaner.startTime;
+    stopTime=unCleaner.stopTime;
+    position=unCleaner.position;
 } //----- Fin de Cleaner (constructeur de copie)
 
 
-Cleaner::Cleaner ( )
+Cleaner::Cleaner()
 // Algorithme :
 //
 {
@@ -50,8 +54,15 @@ Cleaner::Cleaner ( )
 #endif
 } //----- Fin de Cleaner
 
+bool Cleaner :: operator == (const Cleaner& c) const {
+        return (startTime == c.startTime) && 
+               (stopTime == c.stopTime) &&
+               (fabs(position.latitude - c.position.latitude) < 0.0001) && 
+               (fabs(position.longitude - c.position.longitude) < 0.0001);
+    }
 
-Cleaner::~Cleaner ( )
+
+Cleaner::~Cleaner()
 // Algorithme :
 //
 {
