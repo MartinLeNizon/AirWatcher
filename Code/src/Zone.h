@@ -30,12 +30,12 @@ typedef struct{
 
     bool isInside(Coordinates coordinates) {
         bool inside = false;
-        if (coordinates.distanceTo(this.center) <= radius) inside = true;
+        if (coordinates.distanceTo(center) <= radius) inside = true;
         return inside;
     }
 
     float getDistanceFromCenter(Coordinates coordinates) {
-        return coordinates.distanceTo(this.center);
+        return coordinates.distanceTo(center);
     }
 
 }Zone;
