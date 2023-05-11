@@ -39,25 +39,23 @@ $(EXEC): $(OBJ)
 
 $(OBJDIR)/Device.o: $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
 
-$(OBJDIR)/Cleaner.o: $(SRCDIR)Cleaner.h $(SRCDIR)Device.h
+$(OBJDIR)/Cleaner.o: $(SRCDIR)Cleaner.h $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
 
-$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h
+$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
 
 $(OBJDIR)/Measurement.o: $(SRCDIR)Measurement.h $(SRCDIR)Values.h
 
-$(OBJDIR)/Zone.o: $(SRCDIR)Coordinates.h
+$(OBJDIR)/User.o: $(SRCDIR)User.h
 
-$(OBJDIR)/User.o: $(SRCDIR)User.h 
+$(OBJDIR)/AgencyEmployee.o: $(SRCDIR)AgencyEmployee.h $(SRCDIR)User.h
 
-$(OBJDIR)/AgencyEmployee.o: $(SRCDIR)AgencyEmployee.h 
+$(OBJDIR)/PrivateUser.o: $(SRCDIR)PrivateUser.h  $(SRCDIR)User.h
 
-$(OBJDIR)/PrivateUser.o: $(SRCDIR)PrivateUser.h 
+$(OBJDIR)/ProviderEmployee.o: $(SRCDIR)ProviderEmployee.h $(SRCDIR)User.h
 
-$(OBJDIR)/ProviderEmployee.o: $(SRCDIR)ProviderEmployee.h 
+$(OBJDIR)/System.o: $(SRCDIR)System.h $(SRCDIR)User.h $(SRCDIR)Device.h $(SRCDIR)Sensor.h $(SRCDIR)Cleaner.h $(SRCDIR)Provider.h
 
-$(OBJDIR)/System.o: $(SRCDIR)System.h 
-
-$(OBJDIR)/StatisticsService.o: $(SRCDIR)StatisticsService.h 
+$(OBJDIR)/StatisticsService.o: $(SRCDIR)StatisticsService.h $(SRCDIR)Coordinates.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Device.h
 
 $(OBJDIR)/main.o: $(SRCDIR)System.h $(SRCDIR)Device.h
 
@@ -67,7 +65,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 .PHONY:clean mrproper
 
 clean:
-	@rm -rf $(OBJDIR)*.o
+	@rm -rf $(OBJ)
 
 mrproper: clean
-	@rm -rf $(EXEC)/airwatcher
+	@rm -rf $(EXEC)
