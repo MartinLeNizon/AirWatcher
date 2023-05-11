@@ -18,11 +18,14 @@ using namespace std;
 #include "System.h"
 #include "Device.h"
 #include "Sensor.h"
+#include "Coordinates.h"
+
 #include <list>
 #include <iostream>
 #include <cstring>
 #include <string>
 #include <fstream>
+#include <typeinfo>
 
 //------------------------------------------------------------- Constantes
 
@@ -60,29 +63,38 @@ System::System()
 
 void System::initializeSensors(const string fileName) {
     ifstream file(fileName.c_str());
-    Sensor s;
+    Coordinates coord;
+
+    string name="";
+    string latitude="";
+    string longitude="";
+    string bin;
 
     if (file) {
-        while (file >> s && !file.eof()) {
-            cout << s;
-            sensors.push_back(s);
-            cout << "après ajout" << sensors.back();
+        while ( getline(file,name,';') && getline(file,latitude,';') && getline(file,longitude,';') && getline(file,bin) ) {
+
+            if (name!="" && latitude!="" && longitude!=""){
+                coord.latitude=stof(longitude);
+                coord.longitude=stof(latitude);
+
+                devices.push_back(new Sensor(name, coord));
+            }
         }
-        cout << endl << "Réussite initialisation"<< endl;
+
     } else {
-        cout << "Fichier non trouvé" << endl;
+        cout << "Error: file not found." << endl;
     }
 }
 
-list<Sensor> System::getSensors() const {
-    return sensors;
+list<Device*> System::getDevices() {
+    return devices;
 }
 
-void System::displaySensors() const {
-    for (const auto & s : sensors) {
-        cout << s << endl;
+/*void System::displaySensors() const {
+    for (const auto & s : devices) {
+        if (typeid(*s).name()=="6Sensor") cout << *s << endl;
     }
-}
+}*/
 
 
 

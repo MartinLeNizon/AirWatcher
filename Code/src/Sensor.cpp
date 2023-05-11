@@ -60,10 +60,6 @@ Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos)
     cout << "Appel au constructeur de <Sensor>" << endl;
 #endif
 
-    cout << name << endl;
-    cout << position.latitude << endl;
-    cout << position.longitude << endl;
-
     blacklisted = false;
 } //----- Fin de Sensor
 

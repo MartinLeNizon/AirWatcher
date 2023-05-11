@@ -57,9 +57,9 @@ public:
 
     void initializeSensors(const string nomFic);
 
-    list<Sensor> getSensors() const;
+    list<Device*> getDevices();
 
-    void displaySensors() const;
+    /*void displaySensors() const;*/
 
     System ( );
     // Mode d'emploi :
@@ -79,8 +79,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  list<Sensor> sensors;
-  list<Cleaner> cleaners;
+  list<Device*> devices;
   list<User> users;
   list<Provider> providers;
 

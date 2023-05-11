@@ -59,12 +59,9 @@ int main(int argc, char * argv[]){
 
     s.initializeSensors("../Databases/sensors.csv");
 
-    cout << s.getSensors().size() << endl;
+    cout << s.getDevices().size() << endl;  //work
 
-    cout << s.getSensors().front() << endl;
-
-
-    // s.displayDevices();
+    cout << *s.getDevices().front() << endl; // does not work
 
 
 
