@@ -20,6 +20,7 @@ using namespace std;
 #include "Sensor.h"
 #include <list>
 #include <iostream>
+#include <cstring>
 #include <string>
 #include <fstream>
 
@@ -46,7 +47,7 @@ System::System ( const System & unSystem )
 } //----- Fin de System (constructeur de copie)
 
 
-System::System ()
+System::System()
 // Algorithme :
 //
 {
@@ -57,40 +58,35 @@ System::System ()
 
 } //----- Fin de System
 
-void System :: initializeSensors(const string nomFic){
-    ifstream fic;
-    fic.open(nomFic);
+void System::initializeSensors(const string fileName) {
+    ifstream file(fileName.c_str());
     Sensor s;
 
-    if ( fic ) {
-        //cout << "coucou \n";
-        while(fic>>s){
-            cout << s <<"\n";
-            liste_device.push_back(s);
+    if (file) {
+        while (file >> s && !file.eof()) {
+            cout << s;
+            sensors.push_back(s);
+            cout << "après ajout" << sensors.back();
         }
+        cout << endl << "Réussite initialisation"<< endl;
     } else {
-        cout << "fichier non trouvé" << endl;
+        cout << "Fichier non trouvé" << endl;
     }
 }
 
-list<Device> System :: getListDevice () const{
-    return liste_device;
+list<Sensor> System::getSensors() const {
+    return sensors;
 }
 
-void System :: afficherListDevice()const{
-    for (const auto& elem : liste_device) {
-        std::cout << elem << endl;
+void System::displaySensors() const {
+    for (const auto & s : sensors) {
+        cout << s << endl;
     }
 }
 
-void System :: addDevice( const Device & d){
-    //cout << s <<endl;
-    liste_device.push_back(d);
-}
 
 
-
-System::~System ( )
+System::~System()
 // Algorithme :
 //
 {

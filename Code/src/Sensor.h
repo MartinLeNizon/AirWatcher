@@ -53,6 +53,12 @@ public:
 
     Sensor (string nom, Coordinates pos);
 
+    friend istream & operator >> (istream & is, Sensor &d);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     friend ostream & operator << (ostream & os, const Sensor &s);
     // Mode d'emploi :
     //

@@ -12,6 +12,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <string>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -65,28 +66,21 @@ Device::Device (string nom, Coordinates pos)
     cout << "Appel au constructeur de <Device>" << endl;
 #endif
 
+    cout << nom << endl;
+    cout << pos.latitude << endl;
+    cout << pos.longitude << endl;
+
     name=nom;
     position=pos;
+
+
+    cout << name << endl;
+    cout << position.latitude << endl;
+    cout << position.longitude << endl;
 } //----- Fin de Device
 
-istream & operator >> (istream & is, Device & d){
-    string res1="";
-    string res2="";
-    string res3="";
-    getline(is,res1,';');
-    getline(is,res2,';');
-    getline(is,res3,';');
-    
-    if (res1!="" && res2!="" && res3!=""){
-        d.name = res1;
-        d.position.longitude=stof(res2);
-        d.position.latitude=stof(res3);
-    }
-    return is;
-}
-
-ostream & operator << (ostream & os,const Device &d){
-    os <<d.name<<";"<<d.position.longitude<<";"<<d.position.latitude<<";";
+ostream & operator << (ostream & os, const Device &d){
+    os << d.name << ";" << d.position.longitude << ";" << d.position.latitude << ";";
     return os;
 }
 

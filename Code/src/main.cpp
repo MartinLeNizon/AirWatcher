@@ -13,6 +13,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <typeinfo>
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
@@ -45,29 +46,29 @@ void printList(std::list<T> lst) {
 
 int main(int argc, char * argv[]){
   
-  System s;
-  Coordinates c;
-  c.latitude=21;
-  c.longitude=21;
-  Sensor sensor1 = Sensor ("sensor21",c);
-  cout << sensor1 << endl;
-  s.addDevice(sensor1);
-  
-  s.initializeSensors("../../Databases/sensors.csv"); 
-
-  // list<Device> sensors;
-  // sensors.emplace_back("sensor21",c);
-  // for (const auto& sensor : sensors) {
-  //   cout << sensor;
-  // }
+    System s;
 
 
-  //printList(s.getListDevice()); 
-  // s.afficherListDevice();
+    /*Coordinates c;
+    c.latitude=21;
+    c.longitude=21;
+    Sensor s = Sensor("sensor0",c);
+    //Device  * d = *s;
+    cout << s << endl;*/
+
+
+    s.initializeSensors("../Databases/sensors.csv");
+
+    cout << s.getSensors().size() << endl;
+
+    cout << s.getSensors().front() << endl;
+
+
+    // s.displayDevices();
 
 
 
-  return 0;
+    return 0;
 }
 
 

@@ -11,9 +11,10 @@
 #define Device_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Coordinates.h"
-
 #include <string>
+using namespace std;
+
+#include "Coordinates.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -65,7 +66,7 @@ public:
     // Contrat :
     //
 
-    friend istream & operator >>(istream & is, Device &d);
+    friend istream & operator >> (istream & is, Device &d);
     // Mode d'emploi :
     //
     // Contrat :
@@ -102,7 +103,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-std::string name;
+string name;
 Coordinates position;
 
 };

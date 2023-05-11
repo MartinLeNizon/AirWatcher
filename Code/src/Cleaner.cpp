@@ -54,6 +54,32 @@ Cleaner::Cleaner()
 #endif
 } //----- Fin de Cleaner
 
+// TODO: Incomplète
+istream & operator >> (istream & is, Device & d){
+    string res1="";
+    string res2="";
+    string res3="";
+    string bin;
+    getline(is,res1,';');
+    getline(is,res2,';');
+    getline(is,res3,';');
+    getline(is,bin,';');
+    getline(is,bin,';');
+
+    if (res1!="" && res2!="" && res3!=""){
+        d.name = res1;
+        d.position.longitude=stof(res2);
+        d.position.latitude=stof(res3);
+    }
+
+    return is;
+}
+
+ostream & operator << (ostream & os, const Cleaner &s){
+    os << s.name << ";" << s.position.longitude << ";" << s.position.latitude << ";";
+    return os;
+}
+
 bool Cleaner :: operator == (const Cleaner& c) const {
         return (startTime == c.startTime) && 
                (stopTime == c.stopTime) &&
