@@ -66,17 +66,9 @@ Device::Device (string nom, Coordinates pos)
     cout << "Appel au constructeur de <Device>" << endl;
 #endif
 
-    cout << nom << endl;
-    cout << pos.latitude << endl;
-    cout << pos.longitude << endl;
-
     name=nom;
     position=pos;
 
-
-    cout << name << endl;
-    cout << position.latitude << endl;
-    cout << position.longitude << endl;
 } //----- Fin de Device
 
 ostream & operator << (ostream & os, const Device &d){
