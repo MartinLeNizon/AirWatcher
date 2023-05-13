@@ -36,11 +36,12 @@ using namespace std;
 // Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste
 
 template <typename T>
-void printList(std::list<T> lst) {
+
+void printList(list<T> lst) {
     for (const auto& elem : lst) {
-        std::cout << elem << endl;
+        cout << elem << endl;
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 
@@ -59,9 +60,13 @@ int main(int argc, char * argv[]){
 
     s.initializeSensors("../Databases/sensors.csv");
 
-    cout << s.getDevices().size() << endl;  //work
+    cout << *s.getDevices().back() << endl;
 
-    cout << *s.getDevices().front() << endl; // does not work
+    // list<Sensor> sensors;
+    // s.getSensors(sensors);
+
+    // printList(sensors);
+
 
 
 

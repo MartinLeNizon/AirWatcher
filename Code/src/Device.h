@@ -48,13 +48,13 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Device ( const Device & unDevice );
+    Device(const Device & unDevice);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Device ( );
+    Device();
     // Mode d'emploi :
     //
     // Contrat :
@@ -78,20 +78,20 @@ public:
     // Contrat :
     //
 
-    string getName ()const;
+    string getName() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    Coordinates getCoordinates ()const;
+    Coordinates getCoordinates() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
 
-    virtual ~Device ( );
+    virtual ~Device();
     // Mode d'emploi :
     //
     // Contrat :

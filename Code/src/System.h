@@ -41,7 +41,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    System & operator = ( const System & unSystem );
+    System & operator = (const System & unSystem);
     // Mode d'emploi :
     //
     // Contrat :
@@ -49,7 +49,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    System ( const System & unSystem );
+    System(const System & unSystem);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
@@ -57,17 +57,19 @@ public:
 
     void initializeSensors(const string nomFic);
 
-    list<Device*> getDevices();
+    list<Device*> getDevices() const;
+
+    // list<Sensor> getSensors() const;
 
     /*void displaySensors() const;*/
 
-    System ( );
+    System();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~System ( );
+    virtual ~System();
     // Mode d'emploi :
     //
     // Contrat :
