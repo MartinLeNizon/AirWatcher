@@ -18,10 +18,14 @@ using namespace std;
 #include "System.h"
 #include "Device.h"
 #include "Sensor.h"
+#include "Coordinates.h"
+
 #include <list>
 #include <iostream>
+#include <cstring>
 #include <string>
 #include <fstream>
+#include <typeinfo>
 
 //------------------------------------------------------------- Constantes
 
@@ -46,7 +50,7 @@ System::System ( const System & unSystem )
 } //----- Fin de System (constructeur de copie)
 
 
-System::System ()
+System::System()
 // Algorithme :
 //
 {
@@ -57,40 +61,54 @@ System::System ()
 
 } //----- Fin de System
 
-void System :: initializeSensors(const string nomFic){
-    ifstream fic;
-    fic.open(nomFic);
-    Sensor s;
+void System::initializeSensors(const string fileName) {
+    ifstream file(fileName.c_str());
+    Coordinates coord;
 
-    if ( fic ) {
-        //cout << "coucou \n";
-        while(fic>>s){
-            cout << s <<"\n";
-            liste_device.push_back(s);
+    string name="";
+    string latitude="";
+    string longitude="";
+    string bin;
+
+    if (file) {
+        while ( getline(file,name,';') && getline(file,latitude,';') && getline(file,longitude,';') && getline(file,bin) ) {
+
+            if (name!="" && latitude!="" && longitude!=""){
+                coord.latitude=stof(longitude);
+                coord.longitude=stof(latitude);
+
+                devices.push_back(new Sensor(name, coord));
+            }
         }
+
     } else {
-        cout << "fichier non trouvé" << endl;
+        cout << "Error: file not found." << endl;
     }
 }
 
-list<Device> System :: getListDevice () const{
-    return liste_device;
+list<Device*> System::getDevices() const {
+    return devices;
 }
 
-void System :: afficherListDevice()const{
-    for (const auto& elem : liste_device) {
-        std::cout << elem << endl;
+/*list<Sensor*> System::getSensors() const {
+    list<Sensor> sensors;
+    for (const auto & device : devices) {
+        if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
+            sensors.push_back(*sensor);
+        }
     }
-}
+    return sensors;
+}*/
 
-void System :: addDevice( const Device & d){
-    //cout << s <<endl;
-    liste_device.push_back(d);
-}
+/*void System::displaySensors() const {
+    for (const auto & s : devices) {
+        if (typeid(*s).name()=="6Sensor") cout << *s << endl;
+    }
+}*/
 
 
 
-System::~System ( )
+System::~System()
 // Algorithme :
 //
 {

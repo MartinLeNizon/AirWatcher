@@ -54,7 +54,15 @@ public:
     // Contrat :
     //
 
-    bool operator==(const Cleaner& c) const;
+    friend istream & operator >> (istream & is, Cleaner &d);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    friend ostream & operator << (ostream & os, const Cleaner &d);
+
+    bool operator == (const Cleaner& c) const;
 
     Cleaner();
     // Mode d'emploi :
@@ -76,7 +84,6 @@ protected:
 //----------------------------------------------------- Attributs protégés
 time_t startTime;
 time_t stopTime;
-Coordinates position;
 
 };
 

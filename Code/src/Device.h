@@ -11,9 +11,10 @@
 #define Device_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Coordinates.h"
-
 #include <string>
+using namespace std;
+
+#include "Coordinates.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -47,13 +48,13 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Device ( const Device & unDevice );
+    Device(const Device & unDevice);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Device ( );
+    Device();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,7 +66,7 @@ public:
     // Contrat :
     //
 
-    friend istream & operator >>(istream & is, Device &d);
+    friend istream & operator >> (istream & is, Device &d);
     // Mode d'emploi :
     //
     // Contrat :
@@ -77,20 +78,20 @@ public:
     // Contrat :
     //
 
-    string getName ()const;
+    string getName() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    Coordinates getCoordinates ()const;
+    Coordinates getCoordinates() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
 
-    virtual ~Device ( );
+    virtual ~Device();
     // Mode d'emploi :
     //
     // Contrat :
@@ -102,7 +103,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-std::string name;
+string name;
 Coordinates position;
 
 };

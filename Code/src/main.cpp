@@ -13,6 +13,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <typeinfo>
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
@@ -35,39 +36,41 @@ using namespace std;
 // Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste
 
 template <typename T>
-void printList(std::list<T> lst) {
+
+void printList(list<T> lst) {
     for (const auto& elem : lst) {
-        std::cout << elem << endl;
+        cout << elem << endl;
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 
 int main(int argc, char * argv[]){
   
-  System s;
-  Coordinates c;
-  c.latitude=21;
-  c.longitude=21;
-  Sensor sensor1 = Sensor ("sensor21",c);
-  cout << sensor1 << endl;
-  s.addDevice(sensor1);
-  
-  s.initializeSensors("../../Databases/sensors.csv"); 
-
-  // list<Device> sensors;
-  // sensors.emplace_back("sensor21",c);
-  // for (const auto& sensor : sensors) {
-  //   cout << sensor;
-  // }
+    System s;
 
 
-  //printList(s.getListDevice()); 
-  // s.afficherListDevice();
+    /*Coordinates c;
+    c.latitude=21;
+    c.longitude=21;
+    Sensor s = Sensor("sensor0",c);
+    //Device  * d = *s;
+    cout << s << endl;*/
+
+
+    s.initializeSensors("../Databases/sensors.csv");
+
+    cout << *s.getDevices().back() << endl;
+
+    // list<Sensor> sensors;
+    // s.getSensors(sensors);
+
+    // printList(sensors);
 
 
 
-  return 0;
+
+    return 0;
 }
 
 

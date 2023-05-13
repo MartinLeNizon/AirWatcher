@@ -41,7 +41,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    System & operator = ( const System & unSystem );
+    System & operator = (const System & unSystem);
     // Mode d'emploi :
     //
     // Contrat :
@@ -49,7 +49,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    System ( const System & unSystem );
+    System(const System & unSystem);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
@@ -57,19 +57,19 @@ public:
 
     void initializeSensors(const string nomFic);
 
-    list<Device> getListDevice()const;
+    list<Device*> getDevices() const;
 
-    void afficherListDevice()const;
+    // list<Sensor> getSensors() const;
 
-    void addDevice(const Device & d);
+    /*void displaySensors() const;*/
 
-    System ( );
+    System();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~System ( );
+    virtual ~System();
     // Mode d'emploi :
     //
     // Contrat :
@@ -81,10 +81,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  list<Device> liste_device;
-  list<User> liste_user;
-  list<Provider> liste_provider;
-
+  list<Device*> devices;
+  list<User> users;
+  list<Provider> providers;
 
 
 };

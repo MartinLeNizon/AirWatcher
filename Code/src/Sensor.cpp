@@ -41,30 +41,51 @@ Sensor::Sensor ( const Sensor & unSensor )
 } //----- Fin de Sensor (constructeur de copie)
 
 
-Sensor::Sensor ( )
+Sensor::Sensor()
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Sensor>" << endl;
 #endif
+
+    blacklisted = false;
 } //----- Fin de Sensor
 
-Sensor::Sensor (string nom, Coordinates pos):Device(nom,pos)
+Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Sensor>" << endl;
 #endif
+
+    blacklisted = false;
 } //----- Fin de Sensor
 
-ostream & operator << (ostream & os,const Sensor &s){
+istream & operator >> (istream & is, Sensor & s){
+    string res1="";
+    string res2="";
+    string res3="";
+    getline(is,res1,';');
+    getline(is,res2,';');
+    getline(is,res3,';');
+
+    if (res1!="" && res2!="" && res3!=""){
+        s.name = res1;
+        s.position.longitude=stof(res2);
+        s.position.latitude=stof(res3);
+    }
+
+    return is;
+}
+
+ostream & operator << (ostream & os, const Sensor &s){
     string status ="Operational";
     if(s.blacklisted==true){
-        status = "Not operational";
+        status = "Blacklisted";
     }
-    os <<s.getName()<<";"<<s.position.longitude<<";"<<s.position.latitude<<";"<<status<<";";
+    os << s.name << ";" << s.position.longitude << ";" << s.position.latitude << ";" << status << ";";
     return os;
 }
 
