@@ -115,6 +115,20 @@ System::~System()
 #ifdef MAP
     cout << "Appel au destructeur de <System>" << endl;
 #endif
+
+    for (const auto & d : devices) {
+        delete d;
+    }
+
+
+    for (const auto & u : users) {
+        delete u;
+    }
+
+
+    for (const auto & p : providers) {
+        delete p;
+    }
 } //----- Fin de ~System
 
 

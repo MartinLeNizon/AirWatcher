@@ -82,8 +82,8 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
   list<Device*> devices;
-  list<User> users;
-  list<Provider> providers;
+  list<User*> users;
+  list<Provider*> providers;
 
 
 };
