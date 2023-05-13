@@ -59,7 +59,7 @@ public:
 
     list<Device*> getDevices() const;
 
-    // list<Sensor> getSensors() const;
+    list<Sensor*> getSensors() const;
 
     /*void displaySensors() const;*/
 

@@ -62,6 +62,8 @@ int main(int argc, char * argv[]){
 
     cout << *s.getDevices().back() << endl;
 
+    cout << *s.getSensors().back() << endl;
+
     // list<Sensor> sensors;
     // s.getSensors(sensors);
 

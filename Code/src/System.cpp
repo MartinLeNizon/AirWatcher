@@ -90,15 +90,15 @@ list<Device*> System::getDevices() const {
     return devices;
 }
 
-/*list<Sensor*> System::getSensors() const {
-    list<Sensor> sensors;
+list<Sensor*> System::getSensors() const {
+    list<Sensor*> sensors;
     for (const auto & device : devices) {
         if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
-            sensors.push_back(*sensor);
+            sensors.push_back(sensor);
         }
     }
     return sensors;
-}*/
+}
 
 /*void System::displaySensors() const {
     for (const auto & s : devices) {
