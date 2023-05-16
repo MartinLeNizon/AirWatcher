@@ -54,29 +54,43 @@ Cleaner::Cleaner()
 #endif
 } //----- Fin de Cleaner
 
+Cleaner::Cleaner (string nom, Coordinates pos, time_t start, time_t stop) : Device(nom,pos)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Cleaner>" << endl;
+#endif
+
+    startTime=start;
+    stopTime=stop;
+} //----- Fin de Cleaner
+
 // TODO: Incomplète
-istream & operator >> (istream & is, Device & d){
+istream & operator >> (istream & is, Cleaner & c){
     string res1="";
     string res2="";
     string res3="";
-    string bin;
+    string res4="";
+    string res5="";
     getline(is,res1,';');
     getline(is,res2,';');
     getline(is,res3,';');
-    getline(is,bin,';');
-    getline(is,bin,';');
+    getline(is,res4,';');
+    getline(is,res5,';');
 
-    if (res1!="" && res2!="" && res3!=""){
-        d.name = res1;
-        d.position.longitude=stof(res2);
-        d.position.latitude=stof(res3);
+    if (res1!="" && res2!="" && res3!="" && res4!="" && res5!=""){
+        c.name = res1;
+        c.position.longitude=stof(res2);
+        c.position.latitude=stof(res3);
     }
+    // Reste à faire la gestion des dates
 
     return is;
 }
 
-ostream & operator << (ostream & os, const Cleaner &s){
-    os << s.name << ";" << s.position.longitude << ";" << s.position.latitude << ";";
+ostream & operator << (ostream & os, const Cleaner &c){
+    os << c.name << ";" << c.position.longitude << ";" << c.position.latitude << ";"<<c.startTime<<";"<<c.stopTime<<";";
     return os;
 }
 

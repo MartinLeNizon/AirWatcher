@@ -100,6 +100,31 @@ list<Sensor*> System::getSensors() const {
     return sensors;
 }
 
+void System::initializeCleaners(const string fileName) {
+    ifstream file(fileName.c_str());
+    Coordinates coord;
+
+    string name="";
+    string latitude="";
+    string longitude="";
+    string bin;
+
+    if (file) {
+        while ( getline(file,name,';') && getline(file,latitude,';') && getline(file,longitude,';') && getline(file,bin) ) {
+
+            if (name!="" && latitude!="" && longitude!=""){
+                coord.latitude=stof(longitude);
+                coord.longitude=stof(latitude);
+
+                devices.push_back(new Sensor(name, coord));
+            }
+        }
+
+    } else {
+        cout << "Error: file not found." << endl;
+    }
+}
+
 /*void System::displaySensors() const {
     for (const auto & s : devices) {
         if (typeid(*s).name()=="6Sensor") cout << *s << endl;

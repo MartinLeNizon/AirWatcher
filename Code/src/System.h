@@ -61,6 +61,8 @@ public:
 
     list<Sensor*> getSensors() const;
 
+    void initializeCleaners(const string nomFic);
+
     /*void displaySensors() const;*/
 
     System();
