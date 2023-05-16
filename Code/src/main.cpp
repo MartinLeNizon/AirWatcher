@@ -14,6 +14,7 @@ using namespace std;
 #include <fstream>
 #include <list>
 #include <typeinfo>
+#include <ctime>
 
 //------------------------------------------------------ Include personnel
 #include "System.h"
@@ -24,6 +25,7 @@ using namespace std;
 #include "Values.h"
 #include "Coordinates.h"
 #include "Zone.h"
+#include "Conversions.h"
 
 //------------------------------------------------------------------ Types
 
@@ -33,13 +35,13 @@ using namespace std;
 
 //------------------------------------------------------------------- main
 
-// Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste
+
+/*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
 
 template <typename T>
-
-void printList(list<T> lst) {
+void printList(list<T*> lst) {
     for (const auto& elem : lst) {
-        cout << elem << endl;
+        cout << *elem << endl;
     }
     cout << endl;
 }
@@ -49,25 +51,22 @@ int main(int argc, char * argv[]){
   
     System s;
 
+    //Initialisation des Sensors
+    s.initializeSensors("../../Databases/sensors.csv");
 
-    /*Coordinates c;
-    c.latitude=21;
-    c.longitude=21;
-    Sensor s = Sensor("sensor0",c);
-    //Device  * d = *s;
-    cout << s << endl;*/
+    //Initialisation des Cleaners
+    s.initializeCleaners("../../Databases/cleaners.csv");
 
+    //Affichage de la liste des Sensors
+    printList(s.getSensors());
 
-    s.initializeSensors("../Databases/sensors.csv");
+    //Affichage de la liste des Cleaners
+    printList(s.getCleaners());
 
-    cout << *s.getDevices().back() << endl;
-
-    cout << *s.getSensors().back() << endl;
-
-    // list<Sensor> sensors;
-    // s.getSensors(sensors);
-
-    // printList(sensors);
+    //Test des fonctions de convertions
+    string dateStr = "2019-03-01 00:00:00";
+    time_t time=stringToTime_t(dateStr);
+    std::cout << "Date et heure : " << time_tToString(time) << std::endl;
 
 
 

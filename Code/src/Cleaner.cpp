@@ -18,6 +18,7 @@ using namespace std;
 #include "Cleaner.h"
 #include "Device.h"
 #include <cmath> 
+#include "Conversions.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -90,7 +91,13 @@ istream & operator >> (istream & is, Cleaner & c){
 }
 
 ostream & operator << (ostream & os, const Cleaner &c){
-    os << c.name << ";" << c.position.longitude << ";" << c.position.latitude << ";"<<c.startTime<<";"<<c.stopTime<<";";
+    string startDate;
+    string stopDate;
+     
+    startDate=time_tToString(c.startTime);
+    stopDate=time_tToString(c.stopTime);
+    
+    os << c.name << ";" << c.position.longitude << ";" << c.position.latitude << ";"<<startDate<<";"<<stopDate<<";";
     return os;
 }
 

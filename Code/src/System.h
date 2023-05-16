@@ -60,6 +60,7 @@ public:
     list<Device*> getDevices() const;
 
     list<Sensor*> getSensors() const;
+    list<Cleaner*> getCleaners() const;
 
     void initializeCleaners(const string nomFic);
 
