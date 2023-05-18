@@ -59,7 +59,10 @@ public:
 
     list<Device*> getDevices() const;
 
-    // list<Sensor> getSensors() const;
+    list<Sensor*> getSensors() const;
+    list<Cleaner*> getCleaners() const;
+
+    void initializeCleaners(const string nomFic);
 
     /*void displaySensors() const;*/
 
@@ -82,8 +85,8 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
   list<Device*> devices;
-  list<User> users;
-  list<Provider> providers;
+  list<User*> users;
+  list<Provider*> providers;
 
 
 };

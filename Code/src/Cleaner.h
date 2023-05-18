@@ -54,13 +54,15 @@ public:
     // Contrat :
     //
 
-    friend istream & operator >> (istream & is, Cleaner &d);
+    Cleaner (string nom, Coordinates pos, time_t start, time_t stop);
+
+    friend istream & operator >> (istream & is, Cleaner &c);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    friend ostream & operator << (ostream & os, const Cleaner &d);
+    friend ostream & operator << (ostream & os, const Cleaner &c);
 
     bool operator == (const Cleaner& c) const;
 
