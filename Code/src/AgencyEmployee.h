@@ -11,7 +11,6 @@
 #define AgencyEmployee_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Device.h"
 #include <string.h>
 //------------------------------------------------------------- Constantes
 

@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "User.h"
 #include <string.h>
+#include <list>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -57,6 +58,16 @@ public:
     // Contrat :
     //
 
+    PrivateUser(string nom, long point,string nomSensor);
+    PrivateUser(string nom, string nomSensor);
+
+    friend ostream & operator << (ostream & os, const PrivateUser &u);
+
+    void addSensor(string nomSensor);
+
+    string getSensors()const;
+
+
     virtual ~PrivateUser ( );
     // Mode d'emploi :
     //
@@ -69,8 +80,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-  boolean blacklisted;
-  Long points;
+  bool blacklisted;
+  long points;
+  list<string> sensors;
 
 };
 
