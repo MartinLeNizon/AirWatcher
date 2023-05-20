@@ -20,6 +20,7 @@ using namespace std;
 #include "Sensor.h"
 #include "Coordinates.h"
 #include "Conversions.h"
+#include "PrivateUser.h"
 
 
 #include <list>
@@ -120,6 +121,41 @@ void System::initializeCleaners(const string fileName) {
     }
 }
 
+void System::initializePrivateUsers(const string fileName) {
+    ifstream file;
+    file.open(fileName);
+
+    string name="";
+    string nomSensor="";
+    string bin;
+    int ok;
+
+    if (file) {
+        while ( getline(file,name,';') && getline(file,nomSensor,';'), getline(file,bin) ) {
+            ok=addSensorToPrivateUser(name,nomSensor);
+            if (name!="" && nomSensor!="" && ok !=1){
+                users.push_back(new PrivateUser(name,nomSensor));
+            }
+        }
+
+    } else {
+        cout << "Error: file not found." << endl;
+    }
+}
+
+int System :: addSensorToPrivateUser (string name, string sensorName){
+    int ok=-1;
+    for (const auto& elem : users) {
+        if(PrivateUser* pu = dynamic_cast<PrivateUser*>(elem)){
+            if ((*pu).getName()==name){
+                (*pu).addSensor(sensorName);
+                ok=1;
+            }
+        }
+    }
+    return ok;
+}
+
 list<Device*> System::getDevices() const {
     return devices;
 }
@@ -142,6 +178,16 @@ list<Cleaner*> System :: getCleaners() const{
         }
     }
     return cleaners;
+}
+
+list<PrivateUser*> System :: getPrivateUsers() const {
+    list<PrivateUser*> pUsers;
+    for (const auto & elem : users) {
+        if (PrivateUser* pu = dynamic_cast<PrivateUser*>(elem)) {
+            pUsers.push_back(pu);
+        }
+    }
+    return pUsers;
 }
 
 

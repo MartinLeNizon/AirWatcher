@@ -57,11 +57,17 @@ int main(int argc, char * argv[]){
     //Initialisation des Cleaners
     s.initializeCleaners("../../Databases/cleaners.csv");
 
+    //Initialisation des PrivateUsers
+    s.initializePrivateUsers("../../Databases/users.csv");
+
     //Affichage de la liste des Sensors
     printList(s.getSensors());
 
     //Affichage de la liste des Cleaners
     printList(s.getCleaners());
+
+    //Affichage de la liste des PrivateUsers
+    printList(s.getPrivateUsers());
 
     //Test des fonctions de convertions
     string dateStr = "2019-03-01 00:00:00";

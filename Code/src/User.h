@@ -51,11 +51,21 @@ public:
     // Contrat :
     //
 
+    User ( string nom);
+    // Mode d'emploi (constructeur de copie) :
+    //
+    // Contrat :
+    //
+
     User ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    friend ostream & operator << (ostream & os, const User &u);
+
+    string getName() const;
 
     virtual ~User ( );
     // Mode d'emploi :

@@ -15,6 +15,7 @@
 #include "Sensor.h"
 #include "User.h"
 #include "Provider.h"
+#include "PrivateUser.h"
 #include <list>
 #include <string>
 //------------------------------------------------------------- Constantes
@@ -61,8 +62,12 @@ public:
 
     list<Sensor*> getSensors() const;
     list<Cleaner*> getCleaners() const;
+    list<PrivateUser*> getPrivateUsers()const;
 
     void initializeCleaners(const string nomFic);
+    void initializePrivateUsers(const string nomFic);
+
+    int addSensorToPrivateUser(string name, string sensorName);
 
     /*void displaySensors() const;*/
 
