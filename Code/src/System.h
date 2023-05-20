@@ -67,7 +67,10 @@ public:
     void initializeCleaners(const string nomFic);
     void initializePrivateUsers(const string nomFic);
 
-    int addSensorToPrivateUser(string name, string sensorName);
+    //int addSensorToPrivateUser(string name, string sensorName);
+    int addSensorToPrivateUser(string name, Sensor* monSensor);
+
+    list<Sensor*> getFunctionalSensors() const;
 
     /*void displaySensors() const;*/
 

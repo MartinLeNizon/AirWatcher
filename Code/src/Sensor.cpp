@@ -29,6 +29,52 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Sensor::getName() const
+// Algorithme : Permet d'accéder à l'attribut name du sensor
+{
+    return name;
+
+} //----- Fin de Méthode
+
+bool Sensor::getBlacklisted() const
+// Algorithme : Permet d'accéder à l'attribut blacklisted du sensor
+{
+    return blacklisted;
+
+} //----- Fin de Méthode
+
+void Sensor::setBlacklisted(bool blacklist)
+// Algorithme : Permet de blacklister ou d'unblacklister un sensor
+{
+    blacklisted = blacklist;
+
+} //----- Fin de Méthode
+
+void Sensor::setBlacklistedSensor(bool blacklist)
+// Algorithme : Permet de blacklister ou d'unblacklister un sensor et tous les sensors associées de l'user
+{
+    blacklisted = blacklist;
+
+    if (blacklisted && user != NULL) {
+        user->setBlacklistedUser(true);
+    }
+
+} //----- Fin de Méthode
+
+PrivateUser* Sensor::getPrivateUser() const
+// Algorithme : Permet d'accéder à l'attribut user du sensor
+{
+    return user;
+
+} //----- Fin de Méthode
+
+void Sensor::setPrivateUser( PrivateUser* monUser)
+// Algorithme : Permet de setter l'user d'un sensor
+{
+    user = monUser;
+
+} //----- Fin de Méthode
+
 
 //-------------------------------------------- Constructeurs - destructeur
 Sensor::Sensor ( const Sensor & unSensor )
@@ -61,6 +107,7 @@ Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos)
 #endif
 
     blacklisted = false;
+    user = NULL;
 } //----- Fin de Sensor
 
 istream & operator >> (istream & is, Sensor & s){

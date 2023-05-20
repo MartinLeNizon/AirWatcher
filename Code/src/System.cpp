@@ -130,29 +130,49 @@ void System::initializePrivateUsers(const string fileName) {
     string bin;
     int ok;
 
+    Sensor* monSensor;
+
     if (file) {
         while ( getline(file,name,';') && getline(file,nomSensor,';'), getline(file,bin) ) {
-            ok=addSensorToPrivateUser(name,nomSensor);
+            for (const auto & device : devices) {
+                if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
+                    if (sensor->getName() == nomSensor) {
+                        monSensor = sensor;
+                        break;
+                    }
+                }
+            }
+            ok=addSensorToPrivateUser(name, monSensor);
             if (name!="" && nomSensor!="" && ok !=1){
-                users.push_back(new PrivateUser(name,nomSensor));
+                PrivateUser* newUser= new PrivateUser(name,monSensor);
+                monSensor->setPrivateUser(newUser);
+                users.push_back(newUser);
             }
         }
-
     } else {
         cout << "Error: file not found." << endl;
     }
 }
 
-int System :: addSensorToPrivateUser (string name, string sensorName){
+int System :: addSensorToPrivateUser (string name, Sensor* monSensor){
     int ok=-1;
     for (const auto& elem : users) {
         if(PrivateUser* pu = dynamic_cast<PrivateUser*>(elem)){
             if ((*pu).getName()==name){
-                (*pu).addSensor(sensorName);
+                (*pu).addSensor(monSensor);
+                for (const auto & device : devices) {
+                    if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
+                        if (sensor->getName() == monSensor->getName()) {
+                            sensor->setPrivateUser(pu);
+                            break;
+                        }
+                    }
+                }
                 ok=1;
             }
         }
     }
+
     return ok;
 }
 
@@ -188,6 +208,18 @@ list<PrivateUser*> System :: getPrivateUsers() const {
         }
     }
     return pUsers;
+}
+
+list<Sensor*> System::getFunctionalSensors() const {
+    list<Sensor*> sensors;
+    for (const auto & device : devices) {
+        if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
+            if (sensor->getBlacklisted() == false) {
+                sensors.push_back(sensor);
+            }
+        }
+    }
+    return sensors;
 }
 
 

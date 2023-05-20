@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "User.h"
+#include "Sensor.h"
 #include <string.h>
 #include <list>
 //------------------------------------------------------------- Constantes
@@ -23,6 +24,7 @@
 //
 //
 //------------------------------------------------------------------------
+class Sensor;
 
 class PrivateUser : public User
 {
@@ -36,6 +38,17 @@ public:
     // Contrat :
     //
 
+    bool getBlacklisted() const;
+    // Mode d'emploi : Permet d'accéder à l'attribut blacklisted du sensor
+    //
+    // Contrat :
+    //
+
+    void setBlacklistedUser( bool blacklist ) ;
+    // Mode d'emploi : Permet de blacklister ou d'unblacklister un sensor
+    //
+    // Contrat :
+    //
 
 //------------------------------------------------- Surcharge d'opérateurs
     PrivateUser & operator = ( const PrivateUser & unPrivateUser );
@@ -58,14 +71,18 @@ public:
     // Contrat :
     //
 
-    PrivateUser(string nom, long point,string nomSensor);
-    PrivateUser(string nom, string nomSensor);
+    PrivateUser(string nom, long point, Sensor* monSensor);
+    PrivateUser(string nom, Sensor* monSensor);
 
     friend ostream & operator << (ostream & os, const PrivateUser &u);
 
-    void addSensor(string nomSensor);
+    //void addSensor(string nomSensor);
+    string getSensorsName()const;
 
-    string getSensors()const;
+    void addSensor(Sensor* s);
+
+
+    list<Sensor*> getSensors() const;
 
 
     virtual ~PrivateUser ( );
@@ -82,7 +99,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
   bool blacklisted;
   long points;
-  list<string> sensors;
+  list<Sensor*> sensors;
 
 };
 

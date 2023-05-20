@@ -24,7 +24,24 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+bool PrivateUser::getBlacklisted() const
+// Algorithme : Permet d'accéder à l'attribut blacklisted du sensor
+{
+    return blacklisted;
 
+} //----- Fin de Méthode
+
+void PrivateUser::setBlacklistedUser(bool blacklist)
+{
+// Algorithme : Permet de blacklister ou d'unblacklister un user
+    blacklisted = blacklist;
+
+    if (blacklist) {
+        for (const auto & sensor : sensors) {
+            sensor->setBlacklisted(true);
+        }
+    }
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 PrivateUser::PrivateUser ( const PrivateUser & unPrivateUser )
@@ -53,13 +70,13 @@ PrivateUser::PrivateUser ( )
     #endif
 } //----- Fin de PrivateUser
 
-PrivateUser :: PrivateUser (string name, string nomSensor) : User(name){
-    addSensor(nomSensor);
+PrivateUser :: PrivateUser (string name, Sensor* monSensor) : User(name){
+    addSensor(monSensor);
     points=0;
     blacklisted=0;
 }
 
-PrivateUser::PrivateUser (string nom, long point, string nomSensor) : User(nom)
+PrivateUser::PrivateUser (string nom, long point, Sensor* monSensor) : User(nom)
 // Algorithme :
 //
 {
@@ -68,16 +85,16 @@ PrivateUser::PrivateUser (string nom, long point, string nomSensor) : User(nom)
 #endif
 
     points=point;
-    addSensor(nomSensor);
+    addSensor(monSensor);
 
 } //----- Fin de PrivateUser
 
 ostream & operator << (ostream & os, const PrivateUser &u){
-    os << u.name << "; blacklisted : "<<u.blacklisted<<"; points : "<< u.points <<";Sensors :"<<u.getSensors();
+    os << u.name << "; blacklisted : "<<u.blacklisted<<"; points : "<< u.points <<";Sensors :"<<u.getSensorsName();
     return os;
 }
 
-string PrivateUser :: getSensors()const{
+string PrivateUser :: getSensorsName()const{
     string listeSensors="";
     int nbSensor=0;
     
@@ -85,15 +102,19 @@ string PrivateUser :: getSensors()const{
         if(nbSensor!=0){
             listeSensors+="|";
         }
-        listeSensors+=elem;
+        listeSensors+=elem->getName();
         nbSensor++;
     }
 
     return listeSensors;
 }
 
-void PrivateUser :: addSensor(string name){
-    sensors.push_back(name);
+list<Sensor*> PrivateUser::getSensors() const {
+    return sensors;
+}
+
+void PrivateUser :: addSensor(Sensor* s){
+    sensors.push_back(s);
 }
 
 PrivateUser::~PrivateUser ( )

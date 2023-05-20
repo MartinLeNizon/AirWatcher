@@ -12,6 +12,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Device.h"
+#include "PrivateUser.h"
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -22,6 +24,7 @@
 //
 //
 //------------------------------------------------------------------------
+class PrivateUser;
 
 class Sensor : public Device
 {
@@ -31,6 +34,42 @@ public:
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    string getName() const;
+    // Mode d'emploi : Permet d'accéder à l'attribut name du sensor
+    //
+    // Contrat :
+    //
+
+    bool getBlacklisted() const;
+    // Mode d'emploi : Permet d'accéder à l'attribut blacklisted du sensor
+    //
+    // Contrat :
+    //
+
+    void setBlacklisted( bool blacklist ) ;
+    // Mode d'emploi : Permet de blacklister ou d'unblacklister un sensor
+    //
+    // Contrat :
+    //
+
+    void setBlacklistedSensor( bool blacklist ) ;
+    // Mode d'emploi : Permet de blacklister ou d'unblacklister un sensor
+    //
+    // Contrat :
+    //
+
+    PrivateUser* getPrivateUser() const;
+    // Mode d'emploi : Permet d'accéder à l'attribut user du sensor
+    //
+    // Contrat :
+    //
+
+    void setPrivateUser( PrivateUser* monUser ) ;
+    // Mode d'emploi : Permet de setter l'user d'un sensor
     //
     // Contrat :
     //
@@ -84,6 +123,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 bool blacklisted;
+PrivateUser* user;
 
 };
 

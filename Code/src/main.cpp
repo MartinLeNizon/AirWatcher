@@ -26,6 +26,7 @@ using namespace std;
 #include "Coordinates.h"
 #include "Zone.h"
 #include "Conversions.h"
+#include "PrivateUser.h"
 
 //------------------------------------------------------------------ Types
 
@@ -74,6 +75,32 @@ int main(int argc, char * argv[]){
     time_t time=stringToTime_t(dateStr);
     std::cout << "Date et heure : " << time_tToString(time) << std::endl;
 
+    //Test blacklist des sensors
+
+    Sensor* s1 = s.getSensors().front();
+    Sensor* s2 = s.getSensors().back();
+
+    s.addSensorToPrivateUser("User0", s1);
+    s.addSensorToPrivateUser("User1", s2);
+
+    s.getPrivateUsers().front()->setBlacklistedUser(true);
+    s.getSensors().back()->setBlacklistedSensor(true);
+    
+    PrivateUser* user = s.getPrivateUsers().front();
+    cout << *user << endl;
+    printList(user->getSensors());
+
+    PrivateUser* user2 = s.getPrivateUsers().back();
+    cout << *user2 << endl;
+    printList(user2->getSensors());
+
+    cout << endl; 
+
+    printList(s.getFunctionalSensors());
+
+    
+    
+    
 
 
 
