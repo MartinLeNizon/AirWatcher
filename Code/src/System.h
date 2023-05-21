@@ -72,6 +72,8 @@ public:
 
     list<Sensor*> getFunctionalSensors() const;
 
+    void initializeMeasurements(const string fileName);
+
     /*void displaySensors() const;*/
 
     System();

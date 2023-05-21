@@ -61,7 +61,15 @@ int main(int argc, char * argv[]){
     //Initialisation des PrivateUsers
     s.initializePrivateUsers("../../Databases/users.csv");
 
-    //Affichage de la liste des Sensors
+    //Initialisation des Mesures
+    s.initializeMeasurements("../../Databases/measurements.csv");
+
+    cout << "oui" << endl;
+
+
+    printList(s.getSensors().front()->getMeasurement());
+
+    /*//Affichage de la liste des Sensors
     printList(s.getSensors());
 
     //Affichage de la liste des Cleaners
@@ -96,7 +104,7 @@ int main(int argc, char * argv[]){
 
     cout << endl; 
 
-    printList(s.getFunctionalSensors());
+    printList(s.getFunctionalSensors());*/
 
     
     

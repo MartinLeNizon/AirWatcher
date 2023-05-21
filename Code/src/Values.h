@@ -27,7 +27,7 @@ typedef struct{
 
     //---------------------------------------------------------- Attributs
 
-    float o2;
+    float o3;
     float no2;
     float so2;
     float pm10;

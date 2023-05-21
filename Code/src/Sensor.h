@@ -13,7 +13,9 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Device.h"
 #include "PrivateUser.h"
+#include "Measurement.h"
 #include <string>
+#include <list>
 
 //------------------------------------------------------------- Constantes
 
@@ -74,6 +76,18 @@ public:
     // Contrat :
     //
 
+    list<Measurement*> getMeasurement();
+    // Mode d'emploi : Permet d'accéder à l'attribut user du sensor
+    //
+    // Contrat :
+    //
+
+    void addMeasurement (Measurement* m);
+    // Mode d'emploi : Permet d'ajouter une mesure
+    //
+    // Contrat :
+    //
+
 
 //------------------------------------------------- Surcharge d'opérateurs
     Sensor & operator = ( const Sensor & unSensor );
@@ -124,6 +138,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 bool blacklisted;
 PrivateUser* user;
+list<Measurement*> measurements;
 
 };
 

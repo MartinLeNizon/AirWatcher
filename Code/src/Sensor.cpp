@@ -75,6 +75,17 @@ void Sensor::setPrivateUser( PrivateUser* monUser)
 
 } //----- Fin de Méthode
 
+list<Measurement*> Sensor::getMeasurement()
+// Algorithme : Permet d'accéder à l'attribut list du sensor
+{
+    return measurements;
+
+} //----- Fin de Méthode
+
+void Sensor :: addMeasurement (Measurement* m){
+    measurements.push_back(m);
+}
+
 
 //-------------------------------------------- Constructeurs - destructeur
 Sensor::Sensor ( const Sensor & unSensor )

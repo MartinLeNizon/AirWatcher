@@ -16,6 +16,8 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Measurement.h"
+#include <cmath> 
+#include "Conversions.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -56,6 +58,32 @@ Measurement::Measurement ( )
     cout << "Appel au constructeur de <Measurement>" << endl;
 #endif
 } //----- Fin de Measurement
+
+Measurement::Measurement (Values aValue, time_t dateMesure)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Cleaner>" << endl;
+#endif
+    value = aValue;
+    date=dateMesure;
+} //----- Fin de Cleaner
+
+istream & operator >> (istream & is, Measurement & c){
+    
+}
+
+ostream & operator << (ostream & os, const Measurement &c){
+    string date;
+     
+    date=time_tToString(c.date);
+    
+    os << "o3 :"  << c.value.o3 << " no2 :"  << c.value.no2 << " so2 :"  << c.value.so2 << " pm10 :"  << c.value.pm10 << endl << date << endl;
+    return os;
+}
+
+
 
 
 Measurement::~Measurement ( )

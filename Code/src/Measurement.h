@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <time.h>
+#include "Values.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -51,6 +52,16 @@ public:
     // Contrat :
     //
 
+    Measurement (Values value, time_t dateMesure);
+
+    friend istream & operator >> (istream & is, Measurement &c);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    friend ostream & operator << (ostream & os, const Measurement &c);
+
     Measurement ( );
     // Mode d'emploi :
     //
@@ -69,6 +80,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+Values value;
 time_t date;
 
 };

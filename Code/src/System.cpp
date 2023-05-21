@@ -21,6 +21,8 @@ using namespace std;
 #include "Coordinates.h"
 #include "Conversions.h"
 #include "PrivateUser.h"
+#include "Values.h"
+#include "Measurement.h"
 
 
 #include <list>
@@ -174,6 +176,54 @@ int System :: addSensorToPrivateUser (string name, Sensor* monSensor){
     }
 
     return ok;
+}
+
+void System::initializeMeasurements(const string fileName) {
+    ifstream file;
+    file.open(fileName);
+    Values value;
+    time_t date;
+
+    string nomSensor="";
+    string dateMesure="";
+    string att="";
+    string val="";
+    string bin;
+
+    if (file) {
+        while ( getline(file,dateMesure,';') && getline(file,nomSensor,';') && getline(file,att,';') && getline(file,val,';') && getline(file,bin) ) {
+
+            if (dateMesure!="" && nomSensor!="" && att!="" && val!=""){
+                if (att == "O3") {
+                    value.o3=stof(val);
+                } else if (att == "NO2") {
+                    value.no2=stof(val);
+                } else if (att == "SO2") {
+                    value.so2=stof(val);
+                } else if (att == "PM10") {
+                    value.pm10=stof(val);
+                } else {
+                }
+                date=stringToTime_t(dateMesure);
+
+                for (const auto & device : devices) {
+                    if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
+                        if (sensor->getName() == nomSensor) {
+                            sensor->addMeasurement(new Measurement(value,date));
+                            value.o3=0;
+                            value.no2=0;
+                            value.so2=0;
+                            value.pm10=0;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+    } else {
+        cout << "Error: file not found." << endl;
+    }
 }
 
 list<Device*> System::getDevices() const {
