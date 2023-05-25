@@ -7,6 +7,8 @@
 #include "User.h"
 #include "Sensor.h"
 
+class Sensor;
+
 class PrivateUser : public User {
 
 public:

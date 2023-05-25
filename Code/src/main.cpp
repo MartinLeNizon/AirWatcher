@@ -52,7 +52,7 @@ int main(int argc, char * argv[]){
     cout << "oui" << endl;
 
 
-    printList(s.getSensors().front()->getMeasurement());
+    printList(s.getSensors().front()->getMeasurements());
 
     /*//Affichage de la liste des Sensors
     printList(s.getSensors());

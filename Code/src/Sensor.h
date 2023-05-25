@@ -8,6 +8,8 @@
 #include <string>
 #include <list>
 
+class PrivateUser;
+
 class Sensor : public Device {
 
 public:
