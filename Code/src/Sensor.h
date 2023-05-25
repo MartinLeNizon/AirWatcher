@@ -4,6 +4,7 @@
 #include "Device.h"
 #include "PrivateUser.h"
 #include "Measurement.h"
+
 #include <string>
 #include <list>
 
@@ -43,7 +44,7 @@ public:
 
     void setPrivateUser(PrivateUser* monUser);   // Permet de setter l'user d'un sensor
 
-    list<Measurement*> getMeasurement();
+    list<Measurement*> getMeasurements();
 
     void addMeasurement (Measurement* m);
 

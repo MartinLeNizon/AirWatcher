@@ -6,8 +6,7 @@ using namespace std;
 
 #include "Coordinates.h"
 
-class Device 
-{
+class Device {
     
 public:
 

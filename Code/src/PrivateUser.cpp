@@ -7,9 +7,9 @@ using namespace std;
 //-------------------------------------------- Constructeurs - destructeur
 
 PrivateUser::PrivateUser(const PrivateUser & unPrivateUser) {
-    #ifdef MAP
-        cout << "Appel au constructeur de copie de <PrivateUser>" << endl;
-    #endif
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <PrivateUser>" << endl;
+#endif
     name=unPrivateUser.name;
     surname=unPrivateUser.surname;
     mail=unPrivateUser.mail;
@@ -21,9 +21,9 @@ PrivateUser::PrivateUser(const PrivateUser & unPrivateUser) {
 
 
 PrivateUser::PrivateUser() {
-    #ifdef MAP
-        cout << "Appel au constructeur de <PrivateUser>" << endl;
-    #endif
+#ifdef MAP
+    cout << "Appel au constructeur de <PrivateUser>" << endl;
+#endif
 }
 
 PrivateUser :: PrivateUser(string name, Sensor* monSensor) : User(name) {
@@ -53,8 +53,6 @@ ostream & operator << (ostream & os, const PrivateUser &u) {
     os << u.name << "; blacklisted : "<<u.blacklisted<<"; points : "<< u.points <<";Sensors :"<<u.getSensorsName();
     return os;
 }
-
-
 
 //-------------------------------------------------------- Autres méthodes
 

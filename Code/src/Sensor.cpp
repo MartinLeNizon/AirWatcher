@@ -3,6 +3,7 @@ using namespace std;
 
 #include "Sensor.h"
 #include "Device.h"
+#include "PrivateUser.h"
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -96,8 +97,7 @@ void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de
     user = monUser;
 }
 
-// TODO: Mettre getMeasurements
-list<Measurement*> Sensor::getMeasurement() {
+list<Measurement*> Sensor::getMeasurements() {
     return measurements;
 }
 
