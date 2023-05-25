@@ -1,14 +1,11 @@
-# /*************************************************************************
-#                           		        main
-#                              -------------------
-#     début                : 9 mai 2023
-#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
-#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
-# *************************************************************************/
+/*************************************************************************
+                          		        main
+                              -------------------
+     début                : 9 mai 2023
+     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
+     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
+*************************************************************************/
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
 #include <fstream>
@@ -16,7 +13,6 @@ using namespace std;
 #include <typeinfo>
 #include <ctime>
 
-//------------------------------------------------------ Include personnel
 #include "System.h"
 #include "Device.h"
 #include "Sensor.h"
@@ -28,30 +24,19 @@ using namespace std;
 #include "Conversions.h"
 #include "PrivateUser.h"
 
-//------------------------------------------------------------------ Types
-
-//------------------------------------------------------------- Constantes
-
-//-------------------------------------------------- Déclarations méthodes
-
-//------------------------------------------------------------------- main
-
-
-/*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
-
 template <typename T>
-void printList(list<T*> lst) {
+void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
     for (const auto& elem : lst) {
         cout << *elem << endl;
     }
     cout << endl;
 }
 
-
 int main(int argc, char * argv[]){
   
     System s;
 
+    // TODO: Mettre dans le constructeur de System
     //Initialisation des Sensors
     s.initializeSensors("../../Databases/sensors.csv");
 

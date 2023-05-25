@@ -5,10 +5,9 @@ using namespace std;
 
 //#include "AgencyEmployee.h"
 
-// AgencyEmployee::AgencyEmployee ( const AgencyEmployee & UnEmp )
-// // Algorithme :
-// //
-// {
+//-------------------------------------------- Constructeurs - destructeur
+
+// AgencyEmployee::AgencyEmployee(const AgencyEmployee & UnEmp) {
 //     #ifdef MAP
 //         cout << "Appel au constructeur de copie de <AgencyEmployee>" << endl;
 //     #endif
@@ -20,20 +19,14 @@ using namespace std;
 // }
 
 
-// AgencyEmployee::AgencyEmployee ( )
-// // Algorithme :
-// //
-// {
+// AgencyEmployee::AgencyEmployee() {
 //     #ifdef MAP
 //         cout << "Appel au constructeur de <AgencyEmployee>" << endl;
 //     #endif
 // }
 
 
-// AgencyEmployee::~AgencyEmployee ( )
-// // Algorithme :
-// //
-// {
+// AgencyEmployee::~AgencyEmployee() {
 // #ifdef MAP
 //     cout << "Appel au destructeur de <AgencyEmployee>" << endl;
 // #endif

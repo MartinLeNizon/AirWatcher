@@ -1,14 +1,3 @@
-# /*************************************************************************
-#                               Conversions - interface
-#                              -------------------
-#     début                : 9 mai 2023
-#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
-#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
-# *************************************************************************/
-
-//---------- Interface de la classe <Conversions_H> (fichier Conversions.h) ----------------
-
-
 #if ! defined (Conversions_H)
 #define Conversions_H
 
@@ -41,4 +30,4 @@ inline string time_tToString(time_t time){
     return date;
 }
 
-#endif // Convertions.h
+#endif

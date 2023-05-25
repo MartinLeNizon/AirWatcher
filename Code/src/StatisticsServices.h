@@ -1,82 +1,32 @@
-/*************************************************************************
-                           StatisticsServices  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
-
-//---------- Interface de la classe <StatisticsServices> (fichier StatisticsServices.h) ----------------
 #if ! defined ( StatisticsServices_H )
 #define StatisticsServices_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include "Coordinates.h"
 #include "Measurement.h"
 #include "Values.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
-//------------------------------------------------------------------------
-// Rôle de la classe <StatisticsServices>
-//
-//
-//------------------------------------------------------------------------
-
-class StatisticsServices
-{
-//----------------------------------------------------------------- PUBLIC
+class StatisticsServices {
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+//-------------------------------------------- Constructeurs - destructeur
+    StatisticsServices(const StatisticsServices & unStatisticsServices);
+
+    StatisticsServices();
+
+    virtual ~StatisticsServices();
 
 //------------------------------------------------- Surcharge d'opérateurs
     StatisticsServices & operator = ( const StatisticsServices & unStatisticsServices );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    StatisticsServices ( const StatisticsServices & unStatisticsServices );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    StatisticsServices ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~StatisticsServices ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE
+    
 
 protected:
-//----------------------------------------------------- Méthodes protégées
-  Values getAverageAirQuality(Measurement measurements[]);
 
+    Coordinates position;
 
-//----------------------------------------------------- Attributs protégés
-Coordinates position;
+    Values getAverageAirQuality(Measurement measurements[]);
+
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <StatisticsServices>
-
-#endif // StatisticsServices_H
+#endif

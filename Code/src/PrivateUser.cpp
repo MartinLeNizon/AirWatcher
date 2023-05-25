@@ -1,53 +1,12 @@
-/*************************************************************************
-                           PrivateUser  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-*************************************************************************/
-
-//---------- Réalisation de la classe <PrivateUser> (fichier PrivateUser.cpp) ------------
-
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <string>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "PrivateUser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-
-bool PrivateUser::getBlacklisted() const
-// Algorithme : Permet d'accéder à l'attribut blacklisted du sensor
-{
-    return blacklisted;
-
-} //----- Fin de Méthode
-
-void PrivateUser::setBlacklistedUser(bool blacklist)
-{
-// Algorithme : Permet de blacklister ou d'unblacklister un user
-    blacklisted = blacklist;
-
-    if (blacklist) {
-        for (const auto & sensor : sensors) {
-            sensor->setBlacklisted(true);
-        }
-    }
-}
-
 //-------------------------------------------- Constructeurs - destructeur
-PrivateUser::PrivateUser ( const PrivateUser & unPrivateUser )
-// Algorithme :
-//
-{
+
+PrivateUser::PrivateUser(const PrivateUser & unPrivateUser) {
     #ifdef MAP
         cout << "Appel au constructeur de copie de <PrivateUser>" << endl;
     #endif
@@ -58,43 +17,48 @@ PrivateUser::PrivateUser ( const PrivateUser & unPrivateUser )
     blacklisted=unPrivateUser.blacklisted;
     points=unPrivateUser.points;
 
-} //----- Fin de PrivateUser (constructeur de copie)
+}
 
 
-PrivateUser::PrivateUser ( )
-// Algorithme :
-//
-{
+PrivateUser::PrivateUser() {
     #ifdef MAP
         cout << "Appel au constructeur de <PrivateUser>" << endl;
     #endif
-} //----- Fin de PrivateUser
+}
 
-PrivateUser :: PrivateUser (string name, Sensor* monSensor) : User(name){
+PrivateUser :: PrivateUser(string name, Sensor* monSensor) : User(name) {
     addSensor(monSensor);
     points=0;
     blacklisted=0;
 }
 
-PrivateUser::PrivateUser (string nom, long point, Sensor* monSensor) : User(nom)
-// Algorithme :
-//
-{
+PrivateUser::PrivateUser(string nom, long point, Sensor* monSensor) : User(nom) {
 #ifdef MAP
     cout << "Appel au constructeur de <PrivateUser>" << endl;
 #endif
 
     points=point;
     addSensor(monSensor);
+}
 
-} //----- Fin de PrivateUser
+PrivateUser::~PrivateUser() {
+#ifdef MAP
+    cout << "Appel au destructeur de <PrivateUser>" << endl;
+#endif
+}
 
-ostream & operator << (ostream & os, const PrivateUser &u){
+//------------------------------------------------- Surcharge d'opérateurs
+
+ostream & operator << (ostream & os, const PrivateUser &u) {
     os << u.name << "; blacklisted : "<<u.blacklisted<<"; points : "<< u.points <<";Sensors :"<<u.getSensorsName();
     return os;
 }
 
-string PrivateUser :: getSensorsName()const{
+
+
+//-------------------------------------------------------- Autres méthodes
+
+string PrivateUser :: getSensorsName() const {
     string listeSensors="";
     int nbSensor=0;
     
@@ -117,16 +81,17 @@ void PrivateUser :: addSensor(Sensor* s){
     sensors.push_back(s);
 }
 
-PrivateUser::~PrivateUser ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <PrivateUser>" << endl;
-#endif
-} //----- Fin de ~PrivateUser
+bool PrivateUser::getBlacklisted() const {
+    return blacklisted;
+}
 
+void PrivateUser::setBlacklistedUser(bool blacklist) {
+// Permet de blacklister ou d'unblacklister un user
+    blacklisted = blacklist;
 
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
+    if (blacklist) {
+        for (const auto & sensor : sensors) {
+            sensor->setBlacklisted(true);
+        }
+    }
+}

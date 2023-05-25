@@ -1,125 +1,42 @@
-# /*************************************************************************
-#                               Sensor - réalisation
-#                              -------------------
-#     début                : 9 mai 2023
-#     copyright            : (C) 2023 par Mathis Nguyen, Hugo Saysana, Thibaut Chantrel & Martin Nizon-Deladoeuille
-#     e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
-# *************************************************************************/
-
-//---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
-
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "Sensor.h"
 #include "Device.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-// type Sensor::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-string Sensor::getName() const
-// Algorithme : Permet d'accéder à l'attribut name du sensor
-{
-    return name;
-
-} //----- Fin de Méthode
-
-bool Sensor::getBlacklisted() const
-// Algorithme : Permet d'accéder à l'attribut blacklisted du sensor
-{
-    return blacklisted;
-
-} //----- Fin de Méthode
-
-void Sensor::setBlacklisted(bool blacklist)
-// Algorithme : Permet de blacklister ou d'unblacklister un sensor
-{
-    blacklisted = blacklist;
-
-} //----- Fin de Méthode
-
-void Sensor::setBlacklistedSensor(bool blacklist)
-// Algorithme : Permet de blacklister ou d'unblacklister un sensor et tous les sensors associées de l'user
-{
-    blacklisted = blacklist;
-
-    if (blacklisted && user != NULL) {
-        user->setBlacklistedUser(true);
-    }
-
-} //----- Fin de Méthode
-
-PrivateUser* Sensor::getPrivateUser() const
-// Algorithme : Permet d'accéder à l'attribut user du sensor
-{
-    return user;
-
-} //----- Fin de Méthode
-
-void Sensor::setPrivateUser( PrivateUser* monUser)
-// Algorithme : Permet de setter l'user d'un sensor
-{
-    user = monUser;
-
-} //----- Fin de Méthode
-
-list<Measurement*> Sensor::getMeasurement()
-// Algorithme : Permet d'accéder à l'attribut list du sensor
-{
-    return measurements;
-
-} //----- Fin de Méthode
-
-void Sensor :: addMeasurement (Measurement* m){
-    measurements.push_back(m);
-}
-
-
 //-------------------------------------------- Constructeurs - destructeur
-Sensor::Sensor ( const Sensor & unSensor )
-// Algorithme :
-//
-{
+
+Sensor::Sensor(const Sensor & unSensor) {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Sensor>" << endl;
 #endif
-} //----- Fin de Sensor (constructeur de copie)
+}
 
-
-Sensor::Sensor()
-// Algorithme :
-//
-{
+Sensor::Sensor() {
 #ifdef MAP
     cout << "Appel au constructeur de <Sensor>" << endl;
 #endif
 
     blacklisted = false;
-} //----- Fin de Sensor
+}
 
-Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos)
-// Algorithme :
-//
-{
+Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos) {
 #ifdef MAP
     cout << "Appel au constructeur de <Sensor>" << endl;
 #endif
 
     blacklisted = false;
     user = NULL;
-} //----- Fin de Sensor
+}
+
+Sensor::~Sensor() {
+#ifdef MAP
+    cout << "Appel au destructeur de <Sensor>" << endl;
+#endif
+}
+
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 istream & operator >> (istream & is, Sensor & s){
     string res1="";
@@ -147,17 +64,43 @@ ostream & operator << (ostream & os, const Sensor &s){
     return os;
 }
 
+//-------------------------------------------------------- Autres méthodes
 
-Sensor::~Sensor ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Sensor>" << endl;
-#endif
-} //----- Fin de ~Sensor
+string Sensor::getName() const {
+    return name;
 
+}
 
-//------------------------------------------------------------------ PRIVE
+bool Sensor::getBlacklisted() const {
+    return blacklisted;
+}
 
-//----------------------------------------------------- Méthodes protégées
+void Sensor::setBlacklisted(bool blacklist) {   // Permet de blacklister ou d'unblacklister un sensor
+    blacklisted = blacklist;
+
+}
+
+void Sensor::setBlacklistedSensor(bool blacklist) { // Permet de blacklister ou d'unblacklister un sensor et tous les sensors associées de l'user
+    blacklisted = blacklist;
+
+    if (blacklisted && user != NULL) {
+        user->setBlacklistedUser(true);
+    }
+}
+
+PrivateUser* Sensor::getPrivateUser() const {   // Permet d'accéder à l'attribut user du sensor
+    return user;
+}
+
+void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de set l'user d'un sensor
+    user = monUser;
+}
+
+// TODO: Mettre getMeasurements
+list<Measurement*> Sensor::getMeasurement() {
+    return measurements;
+}
+
+void Sensor :: addMeasurement(Measurement* m) {
+    measurements.push_back(m);
+}
