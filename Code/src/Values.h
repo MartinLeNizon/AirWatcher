@@ -6,7 +6,7 @@
 
 using namespace std;
 
-typedef struct {
+typedef struct{
     float o3;
     float no2;
     float so2;

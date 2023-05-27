@@ -11,7 +11,9 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Measurement( const Measurement & unMeasurement );
+    Measurement();
+
+    Measurement(const Measurement & unMeasurement);
 
     Measurement(Values value, time_t dateMesure);
 
@@ -25,10 +27,12 @@ public:
 
     friend ostream & operator << (ostream & os, const Measurement &c);
 
-    Measurement ( );
+//-------------------------------------------------------- Autres méthodes
+
+    Values getValues();
 
 protected:
-    Values value;
+    Values values;
     time_t date;
 
 };

@@ -24,7 +24,7 @@ protected:
 
     Coordinates position;
 
-    Values getAverageAirQuality(Measurement measurements[]);
+    Values getAverageAirQuality(Measurement measurements[], int size);
 
 
 };

@@ -1,10 +1,11 @@
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 #include "Measurement.h"
-#include <cmath> 
 #include "Conversions.h"
+#include "Values.h"
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -25,7 +26,7 @@ Measurement::Measurement(Values aValue, time_t dateMesure) {
 #ifdef MAP
     cout << "Appel au constructeur de <Cleaner>" << endl;
 #endif
-    value = aValue;
+    values = aValue;
     date=dateMesure;
 }
 
@@ -34,7 +35,6 @@ Measurement::~Measurement() {
     cout << "Appel au destructeur de <Measurement>" << endl;
 #endif
 }
-
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -47,11 +47,12 @@ ostream & operator << (ostream & os, const Measurement &c){
      
     date=time_tToString(c.date);
     
-    os << "o3 :"  << c.value.o3 << " no2 :"  << c.value.no2 << " so2 :"  << c.value.so2 << " pm10 :"  << c.value.pm10 << endl << date << endl;
+    os << "o3 :"  << c.values.o3 << " no2 :"  << c.values.no2 << " so2 :"  << c.values.so2 << " pm10 :"  << c.values.pm10 << endl << date << endl;
     return os;
 }
 
+//-------------------------------------------------------- Autres méthodes
 
-
-
-
+Values Measurement::getValues() {
+    return values;
+}
