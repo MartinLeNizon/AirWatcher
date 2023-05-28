@@ -17,7 +17,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     System(const System & unSystem);
 
-    System();
+    System(const string ficSensors, const string ficCleaners, const string ficPrivateUsers, const string ficMeasurements);
 
     virtual ~System();
 
@@ -27,8 +27,6 @@ public:
 
 //-------------------------------------------------------- Autres méthodes
 
-    void initializeSensors(const string nomFic);
-
     list<Device*> getDevices() const;
 
     list<Sensor*> getSensors() const;
@@ -37,24 +35,26 @@ public:
 
     list<PrivateUser*> getPrivateUsers()const;
 
-    void initializeCleaners(const string nomFic);
-
-    void initializePrivateUsers(const string nomFic);
-
     //int addSensorToPrivateUser(string name, string sensorName);
 
     int addSensorToPrivateUser(string name, Sensor* monSensor);
 
     list<Sensor*> getFunctionalSensors() const;
 
-    void initializeMeasurements(const string fileName);
-
     /*void displaySensors() const;*/
 
 protected:
-  list<Device*> devices;
-  list<User*> users;
-  list<Provider*> providers;
+    list<Device*> devices;
+    list<User*> users;
+    list<Provider*> providers;
+
+    void initializeSensors(const string nomFic);
+
+    void initializeCleaners(const string nomFic);
+
+    void initializePrivateUsers(const string nomFic);
+
+    void initializeMeasurements(const string fileName);
 };
 
 

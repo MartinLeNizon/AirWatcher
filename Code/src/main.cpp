@@ -34,23 +34,7 @@ void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'i
 
 int main(int argc, char * argv[]){
   
-    System s;
-
-    // TODO: Mettre dans le constructeur de System
-    //Initialisation des Sensors
-    s.initializeSensors("../../Databases/sensors.csv");
-
-    //Initialisation des Cleaners
-    s.initializeCleaners("../../Databases/cleaners.csv");
-
-    //Initialisation des PrivateUsers
-    s.initializePrivateUsers("../../Databases/users.csv");
-
-    //Initialisation des Mesures
-    s.initializeMeasurements("../../Databases/measurements.csv");
-
-    cout << "oui" << endl;
-
+    System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
 
     printList(s.getSensors().front()->getMeasurements());
 
@@ -102,3 +86,6 @@ int main(int argc, char * argv[]){
 
 
 //--------------------------------------------------- Définitions méthodes
+
+
+//--------------------------------------------------- Méthodes de tests

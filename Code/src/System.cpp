@@ -26,10 +26,22 @@ System::System(const System & unSystem) {
 }
 
 
-System::System() {
+System::System(const string ficSensors, const string ficCleaners, const string ficPrivateUsers, const string ficMeasurements) {
 #ifdef MAP
     cout << "Appel au constructeur de <System>" << endl;
 #endif
+
+    //Initialisation des Sensors
+    initializeSensors(ficSensors);
+
+    //Initialisation des Cleaners
+    initializeCleaners(ficCleaners);
+
+    //Initialisation des PrivateUsers
+    initializePrivateUsers(ficPrivateUsers);
+
+    //Initialisation des Mesures
+    initializeMeasurements(ficMeasurements);
 }
 
 System::~System() {
