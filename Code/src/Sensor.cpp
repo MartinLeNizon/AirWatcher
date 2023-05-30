@@ -104,3 +104,11 @@ list<Measurement*> Sensor::getMeasurements() {
 void Sensor :: addMeasurement(Measurement* m) {
     measurements.push_back(m);
 }
+
+bool Sensor :: operator==(const Sensor* s)const{
+    return (name==(s->name));
+}
+
+bool Sensor :: operator==(const Sensor& s)const{
+    return (name==(s.name));
+}

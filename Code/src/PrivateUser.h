@@ -43,6 +43,7 @@ public:
     bool getBlacklisted() const;
 
     void setBlacklistedUser(bool blacklist);
+    void unBlacklistedUser(bool blacklist);
 
 protected:
   bool blacklisted;

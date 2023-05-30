@@ -38,16 +38,27 @@ int main(int argc, char * argv[]){
   
     System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
 
-    printList(s.getSensors().front()->getMeasurements());
+    //printList(s.getSensors().front()->getMeasurements());
 
     /*//Affichage de la liste des Sensors
     printList(s.getSensors());
-
+    
     //Affichage de la liste des Cleaners
     printList(s.getCleaners());
 
     //Affichage de la liste des PrivateUsers
     printList(s.getPrivateUsers());
+
+    //Blacklist le Sensor100 et vérification
+    Sensor* sensor = s.getSensorsByName("Sensor100");
+    //cout<<(*sensor)<<endl;
+    s.blacklistSensor(sensor);
+
+    //unBlacklist le sensor100 et vérification (le sensor70 réapparaît normalement)
+    s.unBlacklistSensor(sensor);
+    printList(s.getFunctionalSensors());
+
+    printList(s.getFunctionalSensors());
 
     //Test des fonctions de convertions
     string dateStr = "2019-03-01 00:00:00";

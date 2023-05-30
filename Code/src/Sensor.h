@@ -50,6 +50,9 @@ public:
 
     void addMeasurement (Measurement* m);
 
+    bool operator==(const Sensor* s) const;
+    bool operator==(const Sensor& s) const;
+
 
 protected:
     bool blacklisted;

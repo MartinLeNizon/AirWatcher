@@ -268,6 +268,42 @@ list<Sensor*> System::getFunctionalSensors() const {
     return sensors;
 }
 
+void System :: blacklistSensor (Sensor *s){
+    s->setBlacklistedSensor(true);
+    blacklistedSensors.push_back(s);
+}
+
+void System :: unBlacklistSensor (Sensor *s){
+    s->setBlacklisted(false);
+    blacklistedSensors.remove(s);
+    PrivateUser* user =s->getPrivateUser();
+    bool ok=true;
+    if(user!=nullptr){
+        list<Sensor*> listSensorsUser = user->getSensors();
+        for(const auto & sensorUser : listSensorsUser){
+            for ( const auto & sensorBL : blacklistedSensors){
+                if((*sensorUser)==(*sensorBL)) {
+                    break;
+                    ok=false;
+                }
+            }
+        }
+        if(ok){
+            user->unBlacklistedUser(false);
+        }
+    }
+}
+
+Sensor* System :: getSensorsByName(string n){
+    Sensor* s;
+    for(const auto & sensor : getSensors()){
+        if(sensor->getName()==n){
+            s=sensor;
+            break;
+        }
+    }
+    return s;
+}
 
 
 /*void System::displaySensors() const {

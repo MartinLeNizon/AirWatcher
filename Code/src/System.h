@@ -42,12 +42,18 @@ public:
 
     list<Sensor*> getFunctionalSensors() const;
 
+    Sensor* getSensorsByName(string n);
+
+    void blacklistSensor(Sensor* s);
+    void unBlacklistSensor(Sensor* s);
+
     /*void displaySensors() const;*/
 
 protected:
     list<Device*> devices;
     list<User*> users;
     list<Provider*> providers;
+    list<Sensor*> blacklistedSensors;
 
     void initializeSensors(const string nomFic);
 

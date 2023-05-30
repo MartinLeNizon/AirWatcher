@@ -97,3 +97,14 @@ void PrivateUser::setBlacklistedUser(bool blacklist) {
         }
     }
 }
+
+void PrivateUser::unBlacklistedUser(bool blacklist) {
+// Permet de blacklister ou d'unblacklister un user
+    blacklisted = blacklist;
+
+    if (!blacklist) {
+        for (const auto & sensor : sensors) {
+            sensor->setBlacklisted(false);
+        }
+    }
+}
