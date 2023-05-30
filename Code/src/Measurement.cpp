@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <cmath>
-#include <time.h>
+#include <ctime>
 using namespace std;
 
 #include "Measurement.h"

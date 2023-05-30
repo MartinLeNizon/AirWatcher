@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iterator>
 #include <list>
-#include <time.h>
+#include <ctime>
 using namespace std;
 
 #include "StatisticsServices.h"

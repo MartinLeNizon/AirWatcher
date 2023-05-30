@@ -14,17 +14,19 @@ using namespace std;
 #include <list>
 #include <typeinfo>
 #include <ctime>
+#include <string>
+#include <assert.h>
+#include <ctime>
 
-#include "System.h"
-#include "Device.h"
-#include "Sensor.h"
-#include "Cleaner.h"
-#include "Measurement.h"
-#include "Values.h"
-#include "Coordinates.h"
-#include "Zone.h"
-#include "Conversions.h"
-#include "PrivateUser.h"
+#include "../../src/System.h"
+#include "../../src/Device.h"
+#include "../../src/StatisticsServices.h"
+#include "../../src/Measurement.h"
+#include "../../src/Values.h"
+#include "../../src/Conversions.h"
+
+
+//--------------------------------------------------- Définitions méthodes
 
 template <typename T>
 void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
@@ -36,7 +38,31 @@ void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'i
 
 int main(int argc, char * argv[]){
 
-    System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+    //assert(argc == 2);
+
+    // System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+
+    StatisticsServices ss;
+
+    // Values v1;
+    // v1.create(50.25, 74.5, 41.5, 44.75);
+
+    // Values v2;
+    // v2.create(50.5, 72, 39.25, 39.5);
+    // string dateStr = "2019-03-01 00:00:00";
+    // Measurement* m1 = new Measurement(v1, (time_t) stringToTime_t(dateStr));
+    // Measurement* m2 = new Measurement(v2, (time_t) stringToTime_t(dateStr));
+    // list<Measurement*> measurements;
+    // measurements.push_back(m1);
+    // measurements.push_back(m2);
+    // Values v = ss.getAverageAirQuality(measurements);
+    // cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
+
+
+
+//--------------------------------------------------- Définitions méthodes
+
+
 
 
     return 0;

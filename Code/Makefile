@@ -26,7 +26,13 @@ SRC = $(wildcard $(SRCDIR)*.cpp)
 OBJDIR = obj/
 OBJ = $(SRC:$(SRCDIR)%.cpp=$(OBJDIR)%.o)
 
-all: $(EXEC)
+
+# TESTS
+# TESTDIR = Tests/classes/
+
+
+all: $(EXEC) # $(TESTDIR)StatisticsServicesTests
+
 ifeq ($(DEBUG),yes)
 	@echo "Mode debug"
 else
@@ -37,42 +43,43 @@ $(EXEC): $(OBJ)
 	@$(CXX) -o $@ $^ $(LDFLAGS)
 
 
-$(OBJDIR)/Device.o: $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
+$(OBJDIR)Device.o: $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
 
-$(OBJDIR)/Cleaner.o: $(SRCDIR)Cleaner.h $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
+$(OBJDIR)Cleaner.o: $(SRCDIR)Cleaner.h $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
 
-$(OBJDIR)/Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
+$(OBJDIR)Sensor.o: $(SRCDIR)Sensor.h $(SRCDIR)Device.h $(SRCDIR)Coordinates.h
 
-$(OBJDIR)/Measurement.o: $(SRCDIR)Measurement.h $(SRCDIR)Values.h
+$(OBJDIR)Measurement.o: $(SRCDIR)Measurement.h $(SRCDIR)Values.h
 
-$(OBJDIR)/User.o: $(SRCDIR)User.h
+$(OBJDIR)User.o: $(SRCDIR)User.h
 
-$(OBJDIR)/AgencyEmployee.o: $(SRCDIR)AgencyEmployee.h $(SRCDIR)User.h
+$(OBJDIR)AgencyEmployee.o: $(SRCDIR)AgencyEmployee.h $(SRCDIR)User.h
 
-$(OBJDIR)/PrivateUser.o: $(SRCDIR)PrivateUser.h  $(SRCDIR)User.h
+$(OBJDIR)PrivateUser.o: $(SRCDIR)PrivateUser.h  $(SRCDIR)User.h
 
-$(OBJDIR)/ProviderEmployee.o: $(SRCDIR)ProviderEmployee.h $(SRCDIR)User.h
+$(OBJDIR)ProviderEmployee.o: $(SRCDIR)ProviderEmployee.h $(SRCDIR)User.h
 
-$(OBJDIR)/System.o: $(SRCDIR)System.h $(SRCDIR)User.h $(SRCDIR)Device.h $(SRCDIR)Sensor.h $(SRCDIR)Cleaner.h $(SRCDIR)Provider.h
+$(OBJDIR)System.o: $(SRCDIR)System.h $(SRCDIR)User.h $(SRCDIR)Device.h $(SRCDIR)Sensor.h $(SRCDIR)Cleaner.h $(SRCDIR)Provider.h
 
-$(OBJDIR)/StatisticsService.o: $(SRCDIR)StatisticsService.h $(SRCDIR)Coordinates.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Device.h$(SRCDIR)Zone.h
+$(OBJDIR)StatisticsServices.o: $(SRCDIR)StatisticsServices.h $(SRCDIR)Coordinates.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Device.h $(SRCDIR)Zone.h
 
-$(OBJDIR)/main.o: $(SRCDIR)System.h $(SRCDIR)Device.h
+$(OBJDIR)main.o: $(SRCDIR)System.h $(SRCDIR)Device.h
+
+$(TESTDIR)StatisticsServicesTests.o: $(SRCDIR)System.h $(SRCDIR)Device.h $(SRCDIR)StatisticsServices.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Conversions.h
 
 $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 	@$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 
 # TESTS
-TESTDIR = Tests/classes/
 
-$(TESTDIR)StatisticsServicesTests: $(TESTDIR)StatisticsServicesTests.o
-	@$(CXX) -o $@ $^ $(LDFLAGS)
+# $(TESTDIR)StatisticsServicesTests: $(TESTDIR)StatisticsServicesTests.o
+# 	@$(CXX) -o $@ $^ $(LDFLAGS)
 
-$(TESTDIR)StatisticsServicesTests.o: $(TESTDIR)StatisticsServicesTests.cpp
-	@$(CXX) -o $@ -c $< $(CXXFLAGS)
+# $(TESTDIR)StatisticsServicesTests.o: $(TESTDIR)StatisticsServicesTests.cpp
+# 	@$(CXX) -o $@ -c $< $(CXXFLAGS)
 
-
+# CLEAN
 .PHONY:clean mrproper
 
 clean:

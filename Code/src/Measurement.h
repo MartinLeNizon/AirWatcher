@@ -1,7 +1,7 @@
 #if ! defined ( Measurement_H )
 #define Measurement_H
 
-#include <time.h>
+#include <ctime>
 
 #include "Values.h"
 

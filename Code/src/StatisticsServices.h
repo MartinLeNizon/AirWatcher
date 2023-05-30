@@ -23,14 +23,13 @@ public:
 
 //-------------------------------------------------------- Autres méthodes
     Values getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date);
+
+    Values getAverageAirQuality(list<Measurement*> measurements);
     
 
 protected:
 
     Coordinates position;
-
-    Values getAverageAirQuality(list<Measurement*> measurements);
-
 
 };
 
