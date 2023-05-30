@@ -290,6 +290,8 @@ void System :: unBlacklistSensor (Sensor *s){
         }
         if(ok){
             user->unBlacklistedUser(false);
+        } else if (user!=nullptr){
+            s->setBlacklisted(true);
         }
     }
 }
