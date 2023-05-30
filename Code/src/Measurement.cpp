@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <date_t>
 using namespace std;
 
 #include "Measurement.h"
@@ -55,4 +56,8 @@ ostream & operator << (ostream & os, const Measurement &c){
 
 Values Measurement::getValues() {
     return values;
+}
+
+date_t Measurement::getDate() {
+    return date;
 }

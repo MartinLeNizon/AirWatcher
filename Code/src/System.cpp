@@ -173,6 +173,7 @@ int System :: addSensorToPrivateUser (string name, Sensor* monSensor){
     return ok;
 }
 
+// TODO: lire lignes 4 par 4
 void System::initializeMeasurements(const string fileName) {
     ifstream file;
     file.open(fileName);

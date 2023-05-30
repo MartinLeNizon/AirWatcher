@@ -6,6 +6,8 @@
      e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
 *************************************************************************/
 
+// TODO: Rajouter traces de debug
+
 using namespace std;
 #include <iostream>
 #include <fstream>

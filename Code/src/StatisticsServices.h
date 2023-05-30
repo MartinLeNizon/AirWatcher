@@ -19,7 +19,8 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
     StatisticsServices & operator = ( const StatisticsServices & unStatisticsServices );
 
-    Values getAverageAirQuality(List<Sensors> sensors, Zone zone, date_t startDate, date_t endDate);
+//-------------------------------------------------------- Autres méthodes
+    Values getAverageAirQuality(List<Sensors> sensors, Zone zone, date_t date);
     
 
 protected:

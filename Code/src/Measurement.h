@@ -31,10 +31,11 @@ public:
 
     Values getValues();
 
+    date_t getDate()
+
 protected:
     Values values;
     time_t date;
-
 };
 
 #endif

@@ -56,7 +56,7 @@ ostream & operator << (ostream & os, const PrivateUser &u) {
 
 //-------------------------------------------------------- Autres méthodes
 
-string PrivateUser :: getSensorsName() const {
+string PrivateUser::getSensorsName() const {
     string listeSensors="";
     int nbSensor=0;
     
@@ -75,8 +75,12 @@ list<Sensor*> PrivateUser::getSensors() const {
     return sensors;
 }
 
-void PrivateUser :: addSensor(Sensor* s){
+void PrivateUser::addSensor(Sensor* s){
     sensors.push_back(s);
+}
+
+void PrivateUser::addPoint() {
+    points++;
 }
 
 bool PrivateUser::getBlacklisted() const {

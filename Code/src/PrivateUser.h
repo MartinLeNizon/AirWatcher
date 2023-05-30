@@ -36,6 +36,8 @@ public:
 
     void addSensor(Sensor* s);
 
+    void addPoint();
+
     list<Sensor*> getSensors() const;
 
     bool getBlacklisted() const;

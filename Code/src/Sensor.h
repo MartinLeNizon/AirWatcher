@@ -53,7 +53,7 @@ public:
 
 protected:
     bool blacklisted;
-    PrivateUser* user;
+    PrivateUser* privateUser;
     list<Measurement*> measurements;
 };
 

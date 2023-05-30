@@ -1,10 +1,14 @@
 #include <iostream>
 #include <iterator>
+#include <list>
 using namespace std;
 
 #include "StatisticsServices.h"
 #include "Device.h"
 #include "Values.h"
+#include "Measurement.h"
+#include "Coordinates"
+
 
 //-------------------------------------------- Constructeurs - destructeur
 StatisticsServices::StatisticsServices(const StatisticsServices & unStatisticsServices) {
@@ -27,32 +31,61 @@ StatisticsServices::~StatisticsServices() {
 #endif
 }
 
-Values StatisticsServices::getAverageAirQuality(Measurement measurements[], int size){
-    float avgO3 = 0, avgNO2 = 0, avgSO2 = 0, avgPM10 = 0;
-    int nO3 = 0, nNO2 = 0, nSO2 = 0, nPM10 = 0;
-        for (int i=0; i<size; i++) {
-        if (measurements[i].getValues().o3 != 0) {
-            nO3++;
-            avgO3 += measurements[i].getValues().o3;
-        }
-        if (measurements[i].getValues().no2 != 0) {
-            nNO2++;
-            avgNO2 += measurements[i].getValues().no2;
-        }
-        if (measurements[i].getValues().so2 != 0) {
-            nSO2++;
-            avgSO2 += measurements[i].getValues().so2;
-        }
-        if (measurements[i].getValues().pm10 != 0) {
-            nPM10++;
-            avgPM10 += measurements[i].getValues().pm10;
+Values StatisticsServices::getAverageAirQuality(List<Sensors*> sensors, Zone zone, date_t date) {
+#ifdef MAP
+    cout << "Appel a <StatisticsServices::getAverageAirQuality>" << endl;
+#endif
+
+    List<Measurement*> measurements;
+
+    for (const auto& s : sensors) {
+        if ( zone.isInside(s->getPosition()) ) {
+            for (const auto& m : s->getMeasurements()) {
+                if (m->getDate() == date) {
+                    measurements.push_back(m);
+                    if (s->getPrivateUser() != NULL) {
+                        s->getPrivateUser()->addPoint();
+                    }
+                }
+            }
         }
     }
 
-    avgO3 /= nO3;
-    avgNO2 /= nNO2;
-    avgSO2 /= nSO2;
-    avgPM10 /= nPM10;
+    if (measurements.empty()) {
+        cout << "Pas de mesures dans la sone définie" << endl;
+    }
+
+    return getAverageAirQuality(measurements);
+}
+
+
+Values StatisticsServices::getAverageAirQuality(List<Measurement*> measurements){
+    float avgO3 = 0, avgNO2 = 0, avgSO2 = 0, avgPM10 = 0;
+    int nO3 = 0, nNO2 = 0, nSO2 = 0, nPM10 = 0;
+
+    for (const auto& m : measurements) {
+        if (m.getValues().o3 != 0) {
+            nO3++;
+            avgO3 += m->getValues().o3;
+        }
+        if (m->getValues().no2 != 0) {
+            nNO2++;
+            avgNO2 += m->getValues().no2;
+        }
+        if (m->getValues().so2 != 0) {
+            nSO2++;
+            avgSO2 += m->getValues().so2;
+        }
+        if (m->getValues().pm10 != 0) {
+            nPM10++;
+            avgPM10 += m->getValues().pm10;
+        }
+    }
+
+    if (nO3 != 0) avgO3 /= nO3;
+    if (nNO2 != 0) avgNO2 /= nNO2;
+    if (SO3 != 0) avgSO2 /= nSO2;
+    if (nPM10 != 0) avgPM10 /= nPM10;
 
     Values moyenne;
     moyenne.o3 = avgO3;

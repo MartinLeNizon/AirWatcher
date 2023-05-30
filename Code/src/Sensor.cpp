@@ -90,7 +90,7 @@ void Sensor::setBlacklistedSensor(bool blacklist) { // Permet de blacklister ou 
 }
 
 PrivateUser* Sensor::getPrivateUser() const {   // Permet d'accéder à l'attribut user du sensor
-    return user;
+    return privateUser;
 }
 
 void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de set l'user d'un sensor

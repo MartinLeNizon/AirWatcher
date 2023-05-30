@@ -48,6 +48,6 @@ string Device :: getName()const{
     return name;
 }
 
-Coordinates Device :: getCoordinates ()const{
+Coordinates Device :: getPosition ()const{
     return position;
 }

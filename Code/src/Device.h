@@ -30,7 +30,7 @@ public:
 
     string getName() const;
 
-    Coordinates getCoordinates() const;
+    Coordinates getPosition() const;
 
 protected:
     string name;

@@ -1,13 +1,14 @@
 #if ! defined ( System_H )
 #define System_H
 
+#include <list>
+#include <string>
+
 #include "Device.h"
 #include "Sensor.h"
 #include "User.h"
 #include "Provider.h"
 #include "PrivateUser.h"
-#include <list>
-#include <string>
 
 class System {
 
