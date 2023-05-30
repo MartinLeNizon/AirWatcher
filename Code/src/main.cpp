@@ -6,7 +6,12 @@
      e-mails              : mathis.nguyen@insa-lyon.fr ; hugo.saysana@insa-lyon.fr ; thibaut.chantrel@insa-lyon.fr ; martin.nizon-deladoeuille@insa-lyon.fr
 *************************************************************************/
 
-// TODO: Rajouter traces de debug
+// TODO:
+// Rajouter traces de debug
+// Changer chemin d'accès aux fichiers (pour que ça marche de partout)
+// StatisticsServices Comparaison des dates non fonctionnelle
+// Réorganiser le main & mettre les tests dans des méthodes séparées
+// Lire les lignes des measurements.csv par 4
 
 using namespace std;
 #include <iostream>
@@ -25,6 +30,8 @@ using namespace std;
 #include "Zone.h"
 #include "Conversions.h"
 #include "PrivateUser.h"
+#include "StatisticsServices.h"
+#include "Conversions.h"
 
 template <typename T>
 void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
@@ -36,7 +43,7 @@ void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'i
 
 int main(int argc, char * argv[]){
   
-    System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+    //System s("../Databases/sensors.csv", "../Databases/cleaners.csv", "../Databases/users.csv", "../Databases/measurements.csv");
 
     //printList(s.getSensors().front()->getMeasurements());
 
@@ -88,7 +95,60 @@ int main(int argc, char * argv[]){
 
     printList(s.getFunctionalSensors());*/
 
-    
+
+     // System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+
+    System s("../Databases/sensors_test.csv", "../Databases/cleaners_test.csv", "../Databases/users_test.csv", "../Databases/measurements_test.csv");
+
+    StatisticsServices ss;
+
+
+
+    // Test getAverageAirQuality(measurements)
+
+    /*Values v1;
+    v1.create(50.25, 74.5, 41.5, 44.75);
+    Values v2;
+    v2.create(50.5, 72, 39.25, 50.5);
+    string dateStr = "2019-03-01 00:00:00";
+    Measurement* m1 = new Measurement(v1, (time_t) stringToTime_t(dateStr));
+    Measurement* m2 = new Measurement(v2, (time_t) stringToTime_t(dateStr));
+    list<Measurement*> measurements;
+    measurements.push_back(m1);
+    measurements.push_back(m2);
+    Values v = ss.getAverageAirQuality(measurements);
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;*/
+
+    //
+
+    Coordinates coord;
+    coord.latitude = 44;
+    coord.longitude = 0.4;
+    float radius = 100;
+
+    Zone z;
+    z.center = coord;
+    z.radius = radius;
+    string dateStr = "2019-01-02 12:00:00";
+
+    printList(s.getFunctionalSensors());
+
+
+    Sensor* s1 = s.getFunctionalSensors().front();
+
+
+    printList(s1->getMeasurements());
+
+
+
+
+    Values v = ss.getAverageAirQuality(s.getFunctionalSensors(), z, stringToTime_t(dateStr));
+
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
+
+
+
+
     
     
 

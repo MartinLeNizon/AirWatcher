@@ -41,11 +41,29 @@ Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone
     list<Measurement*> measurements;
 
     for (const auto& s : sensors) {
+        cout << 1 << endl;
         if ( zone.isInside(s->getPosition()) ) {
+            cout << 2 << endl;
             for (const auto& m : s->getMeasurements()) {
-                if (m->getDate() == date) {
+                cout << 3 << endl;
+
+                time_t date1 = m->getDate();
+                struct tm* timeinfo1 = localtime(&date1);
+                struct tm* timeinfo2 = localtime(&date);
+
+                int day1 = timeinfo1->tm_mday;
+                int month1 = timeinfo1->tm_mon;
+                int year1 = timeinfo1->tm_year;
+
+                int day2 = timeinfo2->tm_mday;
+                int month2 = timeinfo2->tm_mon;
+                int year2 = timeinfo2->tm_year;
+
+                if (day1 == day2 && month1 == month2 && year1 == year2) {
+                    cout << 4 << endl;
                     measurements.push_back(m);
                     if (s->getPrivateUser() != NULL) {
+                        cout << 5 << endl;
                         s->getPrivateUser()->addPoint();
                     }
                 }
@@ -54,7 +72,7 @@ Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone
     }
 
     if (measurements.empty()) {
-        cout << "Pas de mesures dans la sone définie" << endl;
+        cout << "Pas de mesures dans la zone définie" << endl;
     }
 
     return getAverageAirQuality(measurements);

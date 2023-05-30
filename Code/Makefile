@@ -63,7 +63,7 @@ $(OBJDIR)System.o: $(SRCDIR)System.h $(SRCDIR)User.h $(SRCDIR)Device.h $(SRCDIR)
 
 $(OBJDIR)StatisticsServices.o: $(SRCDIR)StatisticsServices.h $(SRCDIR)Coordinates.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Device.h $(SRCDIR)Zone.h
 
-$(OBJDIR)main.o: $(SRCDIR)System.h $(SRCDIR)Device.h
+$(OBJDIR)main.o: $(SRCDIR)System.h $(SRCDIR)Device.h $(SRCDIR)StatisticsServices.h $(SRCDIR)Conversions.h
 
 $(TESTDIR)StatisticsServicesTests.o: $(SRCDIR)System.h $(SRCDIR)Device.h $(SRCDIR)StatisticsServices.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Conversions.h
 
