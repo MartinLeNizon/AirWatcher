@@ -93,11 +93,8 @@ PrivateUser* Sensor::getPrivateUser() const {   // Permet d'accéder à l'attrib
     return privateUser;
 }
 
-<<<<<<< Updated upstream
-void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de set le privateUser d'un sensor
-=======
+
 void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de set l'user d'un sensor
->>>>>>> Stashed changes
     privateUser = monUser;
 }
 
