@@ -62,13 +62,24 @@ $(OBJDIR)/main.o: $(SRCDIR)System.h $(SRCDIR)Device.h
 $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 	@$(CXX) -o $@ -c $< $(CXXFLAGS)
 
+
+# TESTS
+TESTDIR = Tests/classes/
+
+$(TESTDIR)StatisticsServicesTests: $(TESTDIR)StatisticsServicesTests.o
+	@$(CXX) -o $@ $^ $(LDFLAGS)
+
+$(TESTDIR)StatisticsServicesTests.o: $(TESTDIR)StatisticsServicesTests.cpp
+	@$(CXX) -o $@ -c $< $(CXXFLAGS)
+
+
 .PHONY:clean mrproper
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ) $(TESTDIR)StatisticsServicesTests.o
 
 mrproper: clean
-	@rm -rf $(EXEC)
+	@rm -rf $(EXEC) $(TESTDIR)StatisticsServicesTests.o $(TESTDIR)StatisticsServicesTests
 
 
 
