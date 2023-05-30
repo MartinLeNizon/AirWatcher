@@ -15,16 +15,16 @@ using namespace std;
 #include <typeinfo>
 #include <ctime>
 
-#include "System.h"
-#include "Device.h"
-#include "Sensor.h"
-#include "Cleaner.h"
-#include "Measurement.h"
-#include "Values.h"
-#include "Coordinates.h"
-#include "Zone.h"
-#include "Conversions.h"
-#include "PrivateUser.h"
+#include "../../src/System.h"
+#include "../../src/Device.h"
+#include "../../src/Sensor.h"
+#include "../../src/Cleaner.h"
+#include "../../src/Measurement.h"
+#include "../../src/Values.h"
+#include "../../src/Coordinates.h"
+#include "../../src/Zone.h"
+#include "../../src/Conversions.h"
+#include "../../src/PrivateUser.h"
 
 template <typename T>
 void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
