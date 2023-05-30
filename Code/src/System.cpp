@@ -79,8 +79,8 @@ void System::initializeSensors(const string fileName) {
     if (file) {
         while ( getline(file,name,';') && getline(file,latitude,';') && getline(file,longitude,';') && getline(file,bin) ) {
             if (name!="" && latitude!="" && longitude!=""){
-                coord.latitude=stof(longitude);
-                coord.longitude=stof(latitude);
+                coord.latitude=stof(latitude);
+                coord.longitude=stof(longitude);
                 devices.push_back(new Sensor(name, coord));
             }
         }

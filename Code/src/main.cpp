@@ -121,30 +121,25 @@ int main(int argc, char * argv[]){
 
     //
 
-    Coordinates coord;
-    coord.latitude = 44;
-    coord.longitude = 0.4;
-    float radius = 100;
+
+    // Test getAverageAirQuality(Zone, Date)
+
+    /*Coordinates coord;
+    coord.latitude = 45;
+    coord.longitude = 1;
+    float radius = 1;
 
     Zone z;
     z.center = coord;
     z.radius = radius;
-    string dateStr = "2019-01-02 12:00:00";
+
+    string dateStr = "2019-01-03 12:00:00";
 
     printList(s.getFunctionalSensors());
 
-
-    Sensor* s1 = s.getFunctionalSensors().front();
-
-
-    printList(s1->getMeasurements());
-
-
-
-
     Values v = ss.getAverageAirQuality(s.getFunctionalSensors(), z, stringToTime_t(dateStr));
 
-    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;*/
 
 
 

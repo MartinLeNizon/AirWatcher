@@ -13,6 +13,7 @@ typedef struct Coordinates {
     float longitude;
 
     float distanceTo(struct Coordinates coord) {
+        cout << "Distance to : " << (float) sqrt((double)((latitude-coord.latitude)*(latitude-coord.latitude) + (longitude-coord.longitude)*(longitude-coord.longitude))) << endl;
         return ((float) sqrt((double)((latitude-coord.latitude)*(latitude-coord.latitude) + (longitude-coord.longitude)*(longitude-coord.longitude))));
     } 
 
