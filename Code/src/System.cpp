@@ -85,7 +85,7 @@ void System::initializeSensors(const string fileName) {
             }
         }
     } else {
-        cout << "Error: file not found." << endl;
+        cout << "Error: sensors file not found." << endl;
     }
 }
 
@@ -115,7 +115,7 @@ void System::initializeCleaners(const string fileName) {
             }
         }
     } else {
-        cout << "Error: file not found." << endl;
+        cout << "Error: cleaners file not found." << endl;
     }
 }
 
@@ -148,7 +148,7 @@ void System::initializePrivateUsers(const string fileName) {
             }
         }
     } else {
-        cout << "Error: file not found." << endl;
+        cout << "Error: users file not found." << endl;
     }
 }
 
@@ -190,6 +190,10 @@ void System::initializeMeasurements(const string fileName) {
         while ( getline(file,dateMesure,';') && getline(file,nomSensor,';') && getline(file,att,';') && getline(file,val,';') && getline(file,bin) ) {
 
             if (dateMesure!="" && nomSensor!="" && att!="" && val!=""){
+                value.o3=0;
+                value.no2=0;
+                value.so2=0;
+                value.pm10=0;
                 if (att == "O3") {
                     value.o3=stof(val);
                 } else if (att == "NO2") {
@@ -198,7 +202,6 @@ void System::initializeMeasurements(const string fileName) {
                     value.so2=stof(val);
                 } else if (att == "PM10") {
                     value.pm10=stof(val);
-                } else {
                 }
                 date=stringToTime_t(dateMesure);
 
@@ -206,10 +209,6 @@ void System::initializeMeasurements(const string fileName) {
                     if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
                         if (sensor->getName() == nomSensor) {
                             sensor->addMeasurement(new Measurement(value,date));
-                            value.o3=0;
-                            value.no2=0;
-                            value.so2=0;
-                            value.pm10=0;
                             break;
                         }
                     }
@@ -218,7 +217,7 @@ void System::initializeMeasurements(const string fileName) {
         }
 
     } else {
-        cout << "Error: file not found." << endl;
+        cout << "Error: measurements file not found." << endl;
     }
 }
 
