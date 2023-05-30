@@ -27,7 +27,7 @@ Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos) {
 #endif
 
     blacklisted = false;
-    user = NULL;
+    privateUser = NULL;
 }
 
 Sensor::~Sensor() {
@@ -81,20 +81,20 @@ void Sensor::setBlacklisted(bool blacklist) {   // Permet de blacklister ou d'un
 
 }
 
-void Sensor::setBlacklistedSensor(bool blacklist) { // Permet de blacklister ou d'unblacklister un sensor et tous les sensors associées de l'user
+void Sensor::setBlacklistedSensor(bool blacklist) { // Permet de blacklister ou d'unblacklister un sensor et tous les sensors associées de le privateUser
     blacklisted = blacklist;
 
-    if (blacklisted && user != NULL) {
-        user->setBlacklistedUser(true);
+    if (blacklisted && privateUser != NULL) {
+        privateUser->setBlacklistedUser(true);
     }
 }
 
-PrivateUser* Sensor::getPrivateUser() const {   // Permet d'accéder à l'attribut user du sensor
+PrivateUser* Sensor::getPrivateUser() const {   // Permet d'accéder à l'attribut privateUser du sensor
     return privateUser;
 }
 
-void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de set l'user d'un sensor
-    user = monUser;
+void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de set le privateUser d'un sensor
+    privateUser = monUser;
 }
 
 list<Measurement*> Sensor::getMeasurements() {

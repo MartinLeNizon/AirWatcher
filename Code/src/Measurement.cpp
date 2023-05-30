@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <cmath>
-#include <date_t>
+#include <time.h>
 using namespace std;
 
 #include "Measurement.h"
@@ -58,6 +58,6 @@ Values Measurement::getValues() {
     return values;
 }
 
-date_t Measurement::getDate() {
+time_t Measurement::getDate() {
     return date;
 }

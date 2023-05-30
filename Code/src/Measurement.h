@@ -31,7 +31,7 @@ public:
 
     Values getValues();
 
-    date_t getDate()
+    time_t getDate();
 
 protected:
     Values values;

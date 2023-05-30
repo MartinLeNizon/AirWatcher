@@ -1,13 +1,15 @@
 #include <iostream>
 #include <iterator>
 #include <list>
+#include <time.h>
 using namespace std;
 
 #include "StatisticsServices.h"
 #include "Device.h"
 #include "Values.h"
 #include "Measurement.h"
-#include "Coordinates"
+#include "Coordinates.h"
+#include "Zone.h"
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -31,12 +33,12 @@ StatisticsServices::~StatisticsServices() {
 #endif
 }
 
-Values StatisticsServices::getAverageAirQuality(List<Sensors*> sensors, Zone zone, date_t date) {
+Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date) {
 #ifdef MAP
     cout << "Appel a <StatisticsServices::getAverageAirQuality>" << endl;
 #endif
 
-    List<Measurement*> measurements;
+    list<Measurement*> measurements;
 
     for (const auto& s : sensors) {
         if ( zone.isInside(s->getPosition()) ) {
@@ -59,12 +61,12 @@ Values StatisticsServices::getAverageAirQuality(List<Sensors*> sensors, Zone zon
 }
 
 
-Values StatisticsServices::getAverageAirQuality(List<Measurement*> measurements){
+Values StatisticsServices::getAverageAirQuality(list<Measurement*> measurements){
     float avgO3 = 0, avgNO2 = 0, avgSO2 = 0, avgPM10 = 0;
     int nO3 = 0, nNO2 = 0, nSO2 = 0, nPM10 = 0;
 
     for (const auto& m : measurements) {
-        if (m.getValues().o3 != 0) {
+        if (m->getValues().o3 != 0) {
             nO3++;
             avgO3 += m->getValues().o3;
         }
@@ -84,7 +86,7 @@ Values StatisticsServices::getAverageAirQuality(List<Measurement*> measurements)
 
     if (nO3 != 0) avgO3 /= nO3;
     if (nNO2 != 0) avgNO2 /= nNO2;
-    if (SO3 != 0) avgSO2 /= nSO2;
+    if (nSO2 != 0) avgSO2 /= nSO2;
     if (nPM10 != 0) avgPM10 /= nPM10;
 
     Values moyenne;

@@ -4,6 +4,8 @@
 #include "Coordinates.h"
 #include "Measurement.h"
 #include "Values.h"
+#include "Zone.h"
+#include "Sensor.h"
 
 class StatisticsServices {
 
@@ -20,14 +22,14 @@ public:
     StatisticsServices & operator = ( const StatisticsServices & unStatisticsServices );
 
 //-------------------------------------------------------- Autres méthodes
-    Values getAverageAirQuality(List<Sensors> sensors, Zone zone, date_t date);
+    Values getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date);
     
 
 protected:
 
     Coordinates position;
 
-    Values getAverageAirQuality(Measurement measurements[], int size);
+    Values getAverageAirQuality(list<Measurement*> measurements);
 
 
 };

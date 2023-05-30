@@ -44,7 +44,7 @@ public:
 
     PrivateUser* getPrivateUser() const;
 
-    void setPrivateUser(PrivateUser* monUser);   // Permet de setter l'user d'un sensor
+    void setPrivateUser(PrivateUser* monUser);   // Permet de setter le privateUser d'un sensor
 
     list<Measurement*> getMeasurements();
 
