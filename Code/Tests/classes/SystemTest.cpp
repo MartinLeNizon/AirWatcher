@@ -38,22 +38,24 @@ int main(int argc, char * argv[]){
 
     System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
 
-    if(argv[1]=="AffichageSensors"){
+    string argument = argv[1];
+
+    if(argument =="AffichageSensors"){
 
         //Affichage de la liste des Sensors
         printList(s.getSensors());
 
-    } else if (argv[1]=="AffichageDevices"){
+    } else if (argument =="AffichageDevices"){
         
         //Affichage de la liste des Devices
         printList(s.getDevices());
 
-    } else if (argv[1]=="AffichagePrivateUsers"){
+    } else if (argument =="AffichagePrivateUsers"){
         
         //Affichage de la liste des privates users Devices
         printList(s.getPrivateUsers());
 
-    } else if (argv[1]=="BlacklistSensor100"){
+    } else if (argument =="BlacklistSensor100"){
 
         // Récupération du Sensor100 puis ne le blackliste
         Sensor* sensor = s.getSensorsByName("Sensor100");
@@ -62,7 +64,7 @@ int main(int argc, char * argv[]){
         //Affichage des Sensors fonctionnels
         printList(s.getFunctionalSensors());
 
-    } else if (argv[1]=="UnBlacklistSensor100"){
+    } else if (argument =="UnBlacklistSensor100"){
 
         // Récupération du Sensor100 puis ne le blackliste
         Sensor* sensor = s.getSensorsByName("Sensor100");
