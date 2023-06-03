@@ -33,6 +33,7 @@ StatisticsServices::~StatisticsServices() {
 #endif
 }
 
+
 Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date) {
 #ifdef MAP
     cout << "Appel a <StatisticsServices::getAverageAirQuality>" << endl;
@@ -41,44 +42,60 @@ Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone
     list<Measurement*> measurements;
 
     for (const auto& s : sensors) {
-        cout << "Latitude  : " << s->getPosition().latitude << endl;
-        cout << "Longitude : " << s->getPosition().longitude << endl;
+        #ifdef MAP
+            cout << "Latitude  : " << s->getPosition().latitude << endl;
+            cout << "Longitude : " << s->getPosition().longitude << endl;
+        #endif
         if ( zone.isInside(s->getPosition()) ) {
-            cout << "Inside the zone : " << *s << endl << endl;
+            #ifdef MAP
+                cout << "Inside the zone : " << *s << endl << endl;
+            #endif
+
             for (const auto& m : s->getMeasurements()) {
 
                 time_t date1 = m->getDate();
 
-                struct tm timeinfo1, timeinfo2;
-                gmtime_s(&timeinfo1, &date1);
-                gmtime_s(&timeinfo2, &date);
+                struct tm* timeinfo1 = gmtime(&date1);
+                struct tm* timeinfo2 = gmtime(&date);
 
-                int day1 = timeinfo1.tm_mday;
-                int month1 = timeinfo1.tm_mon + 1;
-                int year1 = timeinfo1.tm_year + 1900;
+                int day1 = timeinfo1->tm_mday;
+                int month1 = timeinfo1->tm_mon + 1;
+                int year1 = timeinfo1->tm_year + 1900;
 
-                int day2 = timeinfo2.tm_mday;
-                int month2 = timeinfo2.tm_mon + 1;
-                int year2 = timeinfo2.tm_year + 1900;
+                int day2 = timeinfo2->tm_mday;
+                int month2 = timeinfo2->tm_mon + 1;
+                int year2 = timeinfo2->tm_year + 1900;
 
                 if (day1 == day2 && month1 == month2 && year1 == year2) {
-                    cout << "Measurements taken into account : " << endl << *m;
+                    #ifdef MAP
+                        cout << "Measurements taken into account : " << endl << *m;
+                    #endif
+
                     measurements.push_back(m);
                     if (s->getPrivateUser() != NULL) {
                         s->getPrivateUser()->addPoint();
-                        cout << "The sensor of this measure have a private user : " << endl << *s->getPrivateUser() << endl << endl;
+
+                        #ifdef MAP
+                            cout << "The sensor of this measure have a private user : " << endl << *s->getPrivateUser() << endl << endl;
+                        #endif
                     } else {
-                        cout << "The sensor of this measure doesn't have a private user" << endl << endl;
+                        #ifdef MAP
+                            cout << "The sensor of this measure doesn't have a private user" << endl << endl;
+                        #endif
                     }
                 }
             }
         } else {
-            cout << "Outside the zone : " << *s << endl << endl;
+            #ifdef MAP
+                cout << "Outside the zone : " << *s << endl << endl;
+            #endif
         }
     }
 
     if (measurements.empty()) {
-        cout << "Pas de mesures dans la zone définie" << endl;
+        #ifdef MAP
+            cout << "No measurement in this zone at that date" << endl;
+        #endif
     }
 
     return getAverageAirQuality(measurements);

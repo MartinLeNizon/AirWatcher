@@ -39,10 +39,6 @@ Measurement::~Measurement() {
 
 //------------------------------------------------- Surcharge d'opérateurs
 
-Measurement & Measurement::operator = (const Measurement & unMeasurement) {}
-
-istream & operator >> (istream & is, Measurement & c){}
-
 ostream & operator << (ostream & os, const Measurement &c){
     string date;
      

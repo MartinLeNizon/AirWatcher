@@ -32,6 +32,8 @@
 *.app
 airwatcher
 airwatcher.exe
+StatisticsServicesTests
+SystemTests
 
 # Résultats des tests
 results.csv
