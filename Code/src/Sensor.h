@@ -7,6 +7,7 @@
 
 #include <string>
 #include <list>
+#include <ctime>
 
 class PrivateUser;
 
@@ -47,6 +48,8 @@ public:
     void setPrivateUser(PrivateUser* monUser);   // Permet de setter le privateUser d'un sensor
 
     list<Measurement*> getMeasurements();
+
+    list<Measurement*> getMeasurements(time_t date);
 
     void addMeasurement (Measurement* m);
 

@@ -96,7 +96,7 @@ int main(int argc, char * argv[]){
     printList(s.getFunctionalSensors());*/
 
 
-     // System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+    // System s("../Databases/sensors.csv", "../Databases/cleaners.csv", "../Databases/users.csv", "../Databases/measurements.csv");
 
     System s("../Databases/sensors_test.csv", "../Databases/cleaners_test.csv", "../Databases/users_test.csv", "../Databases/measurements_test.csv");
 
@@ -122,9 +122,9 @@ int main(int argc, char * argv[]){
     //
 
 
-    // Test getAverageAirQuality(Zone, Date)
+    //Test getAverageAirQuality(Zone, Date)
 
-    /*Coordinates coord;
+    Coordinates coord;
     coord.latitude = 45;
     coord.longitude = 1;
     float radius = 1;
@@ -135,11 +135,11 @@ int main(int argc, char * argv[]){
 
     string dateStr = "2019-01-03 12:00:00";
 
-    printList(s.getFunctionalSensors());
+    //printList(s.getFunctionalSensors());
 
     Values v = ss.getAverageAirQuality(s.getFunctionalSensors(), z, stringToTime_t(dateStr));
 
-    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;*/
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
 
 
 
