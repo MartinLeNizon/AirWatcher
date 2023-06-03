@@ -111,17 +111,16 @@ list<Measurement*> Sensor::getMeasurements(time_t date) {
 
                 time_t date1 = m->getDate();
 
-                struct tm timeinfo1, timeinfo2;
-                gmtime_s(&timeinfo1, &date1);
-                gmtime_s(&timeinfo2, &date);
+                struct tm* timeinfo1 = gmtime(&date1);
+                struct tm* timeinfo2 = gmtime(&date);
 
-                int day1 = timeinfo1.tm_mday;
-                int month1 = timeinfo1.tm_mon + 1;
-                int year1 = timeinfo1.tm_year + 1900;
+                int day1 = timeinfo1->tm_mday;
+                int month1 = timeinfo1->tm_mon + 1;
+                int year1 = timeinfo1->tm_year + 1900;
 
-                int day2 = timeinfo2.tm_mday;
-                int month2 = timeinfo2.tm_mon + 1;
-                int year2 = timeinfo2.tm_year + 1900;
+                int day2 = timeinfo2->tm_mday;
+                int month2 = timeinfo2->tm_mon + 1;
+                int year2 = timeinfo2->tm_year + 1900;
 
                 if (day1 == day2 && month1 == month2 && year1 == year2) {
                     cout << "Measurements taken into account : " << endl << *m;
