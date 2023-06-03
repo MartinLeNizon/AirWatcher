@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 #include "Sensor.h"
@@ -100,6 +101,35 @@ void Sensor::setPrivateUser(PrivateUser* monUser) {    // Algorithme : Permet de
 
 list<Measurement*> Sensor::getMeasurements() {
     return measurements;
+}
+
+list<Measurement*> Sensor::getMeasurements(time_t date) {
+
+    list<Measurement*> selectedMeasurements;
+
+    for (const auto& m : measurements) {
+
+                time_t date1 = m->getDate();
+
+                struct tm timeinfo1, timeinfo2;
+                gmtime_s(&timeinfo1, &date1);
+                gmtime_s(&timeinfo2, &date);
+
+                int day1 = timeinfo1.tm_mday;
+                int month1 = timeinfo1.tm_mon + 1;
+                int year1 = timeinfo1.tm_year + 1900;
+
+                int day2 = timeinfo2.tm_mday;
+                int month2 = timeinfo2.tm_mon + 1;
+                int year2 = timeinfo2.tm_year + 1900;
+
+                if (day1 == day2 && month1 == month2 && year1 == year2) {
+                    cout << "Measurements taken into account : " << endl << *m;
+                    selectedMeasurements.push_back(m);
+                }
+    }
+    
+    return selectedMeasurements;
 }
 
 void Sensor :: addMeasurement(Measurement* m) {

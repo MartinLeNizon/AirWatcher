@@ -96,17 +96,13 @@ int main(int argc, char * argv[]){
     printList(s.getFunctionalSensors());*/
 
 
-     // System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+    // System s("../Databases/sensors.csv", "../Databases/cleaners.csv", "../Databases/users.csv", "../Databases/measurements.csv");
 
     System s("../Databases/sensors_test.csv", "../Databases/cleaners_test.csv", "../Databases/users_test.csv", "../Databases/measurements_test.csv");
 
     StatisticsServices ss;
 
-
-
-    // Test getAverageAirQuality(measurements)
-
-    //
+    // Tests déplacés dans le framework
 
     return 0;
 }
