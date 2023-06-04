@@ -23,7 +23,7 @@ StatisticsServices ss;
 //------------------------------------------ Déclarations méthodes de tests
 void testGetAverageAirQualityZoneDate(string latitude, string longitude, string rad, string date);
 
-void testGetAverageAirQualityMeasurements();
+void testGetAverageAirQualityMeasurements(string v1_o3, string v1_no2, string v1_so2, string v1_pm10, string v2_o3, string v2_no2, string v2_so2, string v2_pm10);
 
 //--------------------------------------------------- Définitions méthodes
 
@@ -39,49 +39,10 @@ int main(int argc, char * argv[]){
 
     assert(argc >= 2);
 
-    string test = string(argv[1]);
-
-    if (test == "zoneDate") testGetAverageAirQualityZoneDate(argv[2], argv[3], argv[4], argv[5]);
-    else if (test == "measurements") testGetAverageAirQualityMeasurements();
-
     string argument = argv[1];
 
-    if(argument == "AverageAirQuality"){
-
-        Values v1;
-        v1.create(50.25, 74.5, 41.5, 44.75);
-        Values v2;
-        v2.create(50.5, 72, 39.25, 50.5);
-
-        string dateStr = "2019-03-01 00:00:00";
-
-        Measurement* m1 = new Measurement(v1, (time_t) stringToTime_t(dateStr));
-        Measurement* m2 = new Measurement(v2, (time_t) stringToTime_t(dateStr));
-
-        list<Measurement*> measurements;
-        measurements.push_back(m1);
-        measurements.push_back(m2);
-
-        Values v = ss.getAverageAirQuality(measurements);
-        cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
-
-    } else if (argument =="AverageAirQualityZoneDate"){
-
-        Coordinates coord;
-        coord.latitude = 45;
-        coord.longitude = 1;
-        float radius = 1;
-
-        Zone z;
-        z.center = coord;
-        z.radius = radius;
-
-        string dateStr = "2019-01-03 12:00:00";
-
-        Values v = ss.getAverageAirQuality(s.getFunctionalSensors(), z, stringToTime_t(dateStr));
-        cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
-
-    }
+    if (argument == "zoneDate") testGetAverageAirQualityZoneDate(argv[2], argv[3], argv[4], argv[5]);
+    else if (argument == "measurements") testGetAverageAirQualityMeasurements(argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]);
 
 
 
@@ -92,11 +53,11 @@ int main(int argc, char * argv[]){
 //------------------------------------------- Définitions méthodes de tests
 
 
-void testGetAverageAirQualityMeasurements() {
+void testGetAverageAirQualityMeasurements(string v1_o3, string v1_no2, string v1_so2, string v1_pm10, string v2_o3, string v2_no2, string v2_so2, string v2_pm10) {
     Values v1;
-    v1.create(50.25, 74.5, 41.5, 44.75);
+    v1.create(stof(v1_o3), stof(v1_no2), stof(v1_so2), stof(v1_pm10));
     Values v2;
-    v2.create(50.5, 72, 39.25, 50.5);
+    v2.create(stof(v2_o3), stof(v2_no2), stof(v2_so2), stof(v2_pm10));
     string dateStr = "2019-03-01 00:00:00";
     Measurement* m1 = new Measurement(v1, (time_t) stringToTime_t(dateStr));
     Measurement* m2 = new Measurement(v2, (time_t) stringToTime_t(dateStr));

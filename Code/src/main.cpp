@@ -102,6 +102,8 @@ int main(int argc, char * argv[]){
 
     StatisticsServices ss;
 
+    printList(s.getSensors().front()->getMeasurements());
+
     // Tests déplacés dans le framework
 
     return 0;

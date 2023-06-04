@@ -180,11 +180,16 @@ void System::initializeMeasurements(const string fileName) {
     Values value;
     time_t date;
 
-    string nomSensor="";
     string dateMesure="";
+    string nomSensor="";
     string att="";
     string val="";
     string bin;
+
+    string dateMesure2="";
+    string nomSensor2="";
+    string att2="";
+    string val2="";
 
     if (file) {
         while ( getline(file,dateMesure,';') && getline(file,nomSensor,';') && getline(file,att,';') && getline(file,val,';') && getline(file,bin) ) {
@@ -203,6 +208,51 @@ void System::initializeMeasurements(const string fileName) {
                 } else if (att == "PM10") {
                     value.pm10=stof(val);
                 }
+
+                for (int i = 0; i < 3; i++) {
+                    if ( getline(file,dateMesure2,';') && getline(file,nomSensor2,';') && getline(file,att2,';') && getline(file,val2,';') &&getline(file,bin) ) {
+                        if (dateMesure2 == dateMesure && nomSensor2 == nomSensor && att2 != att) {
+                            if (att2 == "O3") {
+                                value.o3=stof(val2);
+                            } else if (att2 == "NO2") {
+                                value.no2=stof(val2);
+                            } else if (att2 == "SO2") {
+                                value.so2=stof(val2);
+                            } else if (att2 == "PM10") {
+                                value.pm10=stof(val2);
+                            }
+                        } else if (dateMesure2!="" && nomSensor2!="" && att2!="" && val2!="") {
+                            Values value2;
+                            value2.o3=0;
+                            value2.no2=0;
+                            value2.so2=0;
+                            value2.pm10=0;
+                            if (att == "O3") {
+                                value2.o3=stof(val2);
+                            } else if (att == "NO2") {
+                                value2.no2=stof(val2);
+                            } else if (att == "SO2") {
+                                value2.so2=stof(val2);
+                            } else if (att == "PM10") {
+                                value2.pm10=stof(val2);
+                            }
+
+                            date=stringToTime_t(dateMesure2);
+
+                            for (const auto & device : devices) {
+                                if (Sensor* sensor = dynamic_cast<Sensor*>(device)) {
+                                    if (sensor->getName() == nomSensor2) {
+                                        sensor->addMeasurement(new Measurement(value2,date));
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
                 date=stringToTime_t(dateMesure);
 
                 for (const auto & device : devices) {
