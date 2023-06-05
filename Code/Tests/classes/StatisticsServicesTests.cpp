@@ -23,6 +23,8 @@ StatisticsServices ss;
 //------------------------------------------ Déclarations méthodes de tests
 void testGetAverageAirQualityZoneDate(string latitude, string longitude, string rad, string date);
 
+void testGetAverageAirQualityMeasurements();
+
 void testGetAverageAirQualityMeasurements(string v1_o3, string v1_no2, string v1_so2, string v1_pm10, string v2_o3, string v2_no2, string v2_so2, string v2_pm10);
 
 //--------------------------------------------------- Définitions méthodes
@@ -42,8 +44,12 @@ int main(int argc, char * argv[]){
     string argument = argv[1];
 
     if (argument == "zoneDate") testGetAverageAirQualityZoneDate(argv[2], argv[3], argv[4], argv[5]);
-    else if (argument == "measurements") testGetAverageAirQualityMeasurements(argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]);
+    else if (argument == "measurements") {
+        if (argc >= 10) testGetAverageAirQualityMeasurements(argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]);
+        else testGetAverageAirQualityMeasurements();
+    } else {
 
+    }
 
 
     return 0;
@@ -52,6 +58,11 @@ int main(int argc, char * argv[]){
 
 //------------------------------------------- Définitions méthodes de tests
 
+
+void testGetAverageAirQualityMeasurements() {
+    Values v = ss.getAverageAirQuality(s.getSensorsByName("Sensor1")->getMeasurements());
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
+}
 
 void testGetAverageAirQualityMeasurements(string v1_o3, string v1_no2, string v1_so2, string v1_pm10, string v2_o3, string v2_no2, string v2_so2, string v2_pm10) {
     Values v1;

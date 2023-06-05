@@ -39,6 +39,11 @@ Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone
     cout << "Appel a <StatisticsServices::getAverageAirQuality>" << endl;
 #endif
 
+    if (zone.radius < 0) {
+        zone.radius *= -1;
+        cerr << "Le rayon de la zone doit être positif : prise en compte de sa valeur absolue" << endl;
+    }
+
     list<Measurement*> measurements;
 
     for (const auto& s : sensors) {
@@ -107,22 +112,22 @@ Values StatisticsServices::getAverageAirQuality(list<Measurement*> measurements)
     int nO3 = 0, nNO2 = 0, nSO2 = 0, nPM10 = 0;
 
     for (const auto& m : measurements) {
-        if (m->getValues().o3 != 0) {
+        if (m->getValues().o3 >= 0) {
             nO3++;
             avgO3 += m->getValues().o3;
-        }
-        if (m->getValues().no2 != 0) {
+        } else cerr << "Valeur en O3 non prise en compte : doit être positive" << endl;
+        if (m->getValues().no2 >= 0) {
             nNO2++;
             avgNO2 += m->getValues().no2;
-        }
-        if (m->getValues().so2 != 0) {
+        } else cerr << "Valeur en NO2 non prise en compte : doit être positive" << endl;
+        if (m->getValues().so2 >= 0) {
             nSO2++;
             avgSO2 += m->getValues().so2;
-        }
-        if (m->getValues().pm10 != 0) {
+        } else cerr << "Valeur en SO2 non prise en compte : doit être positive" << endl;
+        if (m->getValues().pm10 >= 0) {
             nPM10++;
             avgPM10 += m->getValues().pm10;
-        }
+        } else cerr << "Valeur en PM10 non prise en compte : doit être positive" << endl;
     }
 
     if (nO3 != 0) avgO3 /= nO3;

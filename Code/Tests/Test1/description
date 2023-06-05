@@ -1,1 +1,1 @@
-Test de getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date) avec un petit set de valeurs
+Test de getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date) avec un petit set de valeurs de tests

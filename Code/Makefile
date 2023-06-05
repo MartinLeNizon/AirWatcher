@@ -26,12 +26,6 @@ SRC = $(wildcard $(SRCDIR)*.cpp)
 OBJDIR = obj/
 OBJ = $(SRC:$(SRCDIR)%.cpp=$(OBJDIR)%.o)
 
-# TEST
-TESTDIR = Tests/classes/
-TEST = $(TESTDIR)StatisticsServicesTests
-TESTOBJ = $(TEST:%=%.o)
-TESTSRC = $(TEST:%=%.cpp)
-
 
 all: $(EXEC) $(TEST)
 
@@ -40,6 +34,23 @@ ifeq ($(DEBUG),yes)
 else
 	@echo "Mode release"
 endif
+
+
+# TEST
+TESTDIR = Tests/classes/
+TESTSRC = $(wildcard $(TESTDIR)*.cpp)
+TESTOBJ = $(TESTSRC:%.cpp=%.o)
+TEST = $(TESTSRC:%.cpp=%)
+
+$(TESTDIR)StatisticsServicesTests: $(TESTDIR)StatisticsServicesTests.o $(filter-out $(OBJDIR)main.o, $(OBJ))
+	@$(CXX) -o $@ $^ $(LDFLAGS)
+
+$(TESTDIR)SystemTests: $(TESTDIR)SystemTests.o $(filter-out $(OBJDIR)main.o, $(OBJ))
+	@$(CXX) -o $@ $^ $(LDFLAGS)
+
+$(TESTDIR)%.o: $(TESTDIR)%.cpp
+	@$(CXX) -o $@ -c $< $(CXXFLAGS)
+
 
 $(EXEC): $(OBJ)
 	@$(CXX) -o $@ $^ $(LDFLAGS)
@@ -69,15 +80,9 @@ $(OBJDIR)main.o: $(SRCDIR)System.h $(SRCDIR)Device.h $(SRCDIR)StatisticsServices
 
 $(TESTDIR)StatisticsServicesTests.o: $(SRCDIR)System.h $(SRCDIR)Device.h $(SRCDIR)StatisticsServices.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Conversions.h
 
+$(TESTDIR)SystemTests.o: $(SRCDIR)System.h $(SRCDIR)Device.h $(SRCDIR)Sensor.h $(SRCDIR)Cleaner.h $(SRCDIR)StatisticsServices.h $(SRCDIR)Measurement.h $(SRCDIR)Values.h $(SRCDIR)Conversions.h $(SRCDIR)Coordinates.h $(SRCDIR)Zone.h $(SRCDIR)PrivateUser.h
+
 $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
-	@$(CXX) -o $@ -c $< $(CXXFLAGS)
-
-
-# TESTS
-$(TEST): $(TESTOBJ) $(filter-out $(OBJDIR)main.o, $(OBJ))
-	@$(CXX) -o $@ $^ $(LDFLAGS)
-
-$(TESTDIR)%.o: $(TESTDIR)%.cpp
 	@$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 # CLEAN
@@ -85,6 +90,8 @@ $(TESTDIR)%.o: $(TESTDIR)%.cpp
 
 clean:
 	@rm -rf $(OBJ) $(TESTDIR)StatisticsServicesTests.o
+	@echo "Fichiers objets supprimés"
 
 mrproper: clean
 	@rm -rf $(EXEC) $(TESTDIR)StatisticsServicesTests.o $(TESTDIR)StatisticsServicesTests
+	@echo "Fichiers objets et exécutable(s) supprimés"

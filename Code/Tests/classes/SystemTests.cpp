@@ -13,6 +13,7 @@ using namespace std;
 #include <fstream>
 #include <list>
 #include <typeinfo>
+#include <assert.h>
 #include <ctime>
 
 #include "../../src/System.h"
@@ -26,6 +27,8 @@ using namespace std;
 #include "../../src/Conversions.h"
 #include "../../src/PrivateUser.h"
 
+System s("../../../Databases/sensors_test.csv", "../../../Databases/cleaners_test.csv", "../../../Databases/users_test.csv", "../../../Databases/measurements_test.csv");
+
 template <typename T>
 void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'importe quelle liste à condition que << soit redéfini pour les objets de cette liste*/
     for (const auto& elem : lst) {
@@ -36,7 +39,7 @@ void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'i
 
 int main(int argc, char * argv[]){
 
-    System s("../../Databases/sensors.csv", "../../Databases/cleaners.csv", "../../Databases/users.csv", "../../Databases/measurements.csv");
+    assert(argc > 2);
 
     string argument = argv[1];
 
@@ -55,19 +58,19 @@ int main(int argc, char * argv[]){
         //Affichage de la liste des privates users Devices
         printList(s.getPrivateUsers());
 
-    } else if (argument =="BlacklistSensor100"){
+    } else if (argument =="BlacklistSensor1"){
 
         // Récupération du Sensor100 puis ne le blackliste
-        Sensor* sensor = s.getSensorsByName("Sensor100");
+        Sensor* sensor = s.getSensorsByName("Sensor1");
         s.blacklistSensor(sensor);
 
         //Affichage des Sensors fonctionnels
         printList(s.getFunctionalSensors());
 
-    } else if (argument =="UnBlacklistSensor100"){
+    } else if (argument =="UnBlacklistSensor1"){
 
         // Récupération du Sensor100 puis ne le blackliste
-        Sensor* sensor = s.getSensorsByName("Sensor100");
+        Sensor* sensor = s.getSensorsByName("Sensor1");
         s.blacklistSensor(sensor);
 
         // On unblackliste le Sensor100
