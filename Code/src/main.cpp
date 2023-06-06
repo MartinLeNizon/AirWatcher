@@ -35,11 +35,86 @@ void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'i
 }
 
 int main(int argc, char * argv[]){
-  
+
+    string pause;
     System s("../Databases/sensors.csv", "../Databases/cleaners.csv", "../Databases/users.csv", "../Databases/measurements.csv");
 
-    printList(s.getPrivateUsers());
+    cout << "Affichage de la liste des Devices"<<endl;
     printList(s.getDevices());
+
+    cout <<endl;
+    
+    
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des PrivateUsers"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    printList(s.getPrivateUsers());
+    cout <<endl;
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des Cleaners"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    printList(s.getCleaners());
+    cout <<endl;
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des Sensors"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    printList(s.getFunctionalSensors());
+    cout <<endl;
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des Sensors oprérationnels après avoir blacklisté le sensor 100"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    // Récupération du Sensor1 puis ne le blackliste
+    Sensor* sensor = s.getSensorsByName("Sensor100");
+    s.blacklistSensor(sensor);
+    //Affichage des Sensors fonctionnels
+    printList(s.getFunctionalSensors());
+    cout <<endl;
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des Sensors oprérationnels après avoir unblacklisté le sensor 100"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    // On unblacklist le Sensor 100
+    s.unBlacklistSensor(sensor);
+    //Affichage des Sensors fonctionnels
+    printList(s.getFunctionalSensors());
+    cout <<endl;
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des Sensors oprérationnels après avoir blacklisté le sensor 15 (quelconque)"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    // Récupération du Sensor1 puis ne le blackliste
+    sensor = s.getSensorsByName("Sensor15");
+    s.blacklistSensor(sensor);
+    //Affichage des Sensors fonctionnels
+    printList(s.getFunctionalSensors());
+    cout <<endl;
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la liste des Sensors oprérationnels après avoir unblacklisté le sensor 100"<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    // On unblacklist le Sensor 100
+    s.unBlacklistSensor(sensor);
+    //Affichage des Sensors fonctionnels
+    printList(s.getFunctionalSensors());
+    cout <<endl;
+
 
     return 0;
 }
