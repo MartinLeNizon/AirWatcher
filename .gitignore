@@ -37,3 +37,6 @@ SystemTests
 
 # Résultats des tests
 results.csv
+
+# VS Code
+.vscode
