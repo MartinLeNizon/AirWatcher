@@ -2,6 +2,9 @@
 #include <iterator>
 #include <list>
 #include <ctime>
+#ifdef PERF
+    #include <chrono>
+#endif
 using namespace std;
 
 #include "StatisticsServices.h"
@@ -38,6 +41,10 @@ Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone
 #ifdef MAP
     cout << "Appel a <StatisticsServices::getAverageAirQuality>" << endl;
 #endif
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
 
     if (zone.radius < 0) {
         zone.radius *= -1;
@@ -102,6 +109,12 @@ Values StatisticsServices::getAverageAirQuality(list<Sensor*> sensors, Zone zone
             cout << "No measurement in this zone at that date" << endl;
         #endif
     }
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution getAverageAirQuality(list<Sensor*> sensors, Zone zone, time_t date) : " << duration.count() << " ms" << endl;
+    #endif
 
     return getAverageAirQuality(measurements);
 }

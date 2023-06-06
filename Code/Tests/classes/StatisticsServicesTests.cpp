@@ -47,8 +47,6 @@ int main(int argc, char * argv[]){
     else if (argument == "measurements") {
         if (argc >= 10) testGetAverageAirQualityMeasurements(argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]);
         else testGetAverageAirQualityMeasurements();
-    } else {
-
     }
 
 

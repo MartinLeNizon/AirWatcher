@@ -1,3 +1,13 @@
+#include <list>
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <fstream>
+#include <typeinfo>
+#include <ctime>
+#ifdef PERF
+    #include <chrono>
+#endif
 using namespace std;
 
 #include "System.h"
@@ -8,15 +18,6 @@ using namespace std;
 #include "PrivateUser.h"
 #include "Values.h"
 #include "Measurement.h"
-
-
-#include <list>
-#include <iostream>
-#include <cstring>
-#include <string>
-#include <fstream>
-#include <typeinfo>
-#include <ctime>
 
 //-------------------------------------------- Constructeurs - destructeur
 System::System(const System & unSystem) {
@@ -31,6 +32,10 @@ System::System(const string ficSensors, const string ficCleaners, const string f
     cout << "Appel au constructeur de <System>" << endl;
 #endif
 
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     //Initialisation des Sensors
     initializeSensors(ficSensors);
 
@@ -42,6 +47,12 @@ System::System(const string ficSensors, const string ficCleaners, const string f
 
     //Initialisation des Mesures
     initializeMeasurements(ficMeasurements);
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution System(const string ficSensors, const string ficCleaners, const string ficPrivateUsers, const string ficMeasurements) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
 System::~System() {
@@ -67,6 +78,11 @@ System::~System() {
 //-------------------------------------------------------- Autres méthodes
 
 void System::initializeSensors(const string fileName) {
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     ifstream file;
     file.open(fileName);
     Coordinates coord;
@@ -87,9 +103,20 @@ void System::initializeSensors(const string fileName) {
     } else {
         cout << "Error: sensors file not found." << endl;
     }
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution initializeSensors(const string fileName) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
 void System::initializeCleaners(const string fileName) {
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     ifstream file;
     file.open(fileName);
     Coordinates coord;
@@ -117,9 +144,20 @@ void System::initializeCleaners(const string fileName) {
     } else {
         cout << "Error: cleaners file not found." << endl;
     }
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution initializeCleaners(const string fileName) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
 void System::initializePrivateUsers(const string fileName) {
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     ifstream file;
     file.open(fileName);
 
@@ -150,9 +188,15 @@ void System::initializePrivateUsers(const string fileName) {
     } else {
         cout << "Error: users file not found." << endl;
     }
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution initializePrivateUsers(const string fileName) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
-int System :: addSensorToPrivateUser (string name, Sensor* monSensor){
+int System :: addSensorToPrivateUser(string name, Sensor* monSensor){
     int ok=-1;
     for (const auto& elem : users) {
         if(PrivateUser* pu = dynamic_cast<PrivateUser*>(elem)){
@@ -173,8 +217,13 @@ int System :: addSensorToPrivateUser (string name, Sensor* monSensor){
     return ok;
 }
 
-// TODO: lire lignes 4 par 4
+
 void System::initializeMeasurements(const string fileName) {
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     ifstream file;
     file.open(fileName);
     Values value;
@@ -269,6 +318,12 @@ void System::initializeMeasurements(const string fileName) {
     } else {
         cout << "Error: measurements file not found." << endl;
     }
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution initializeMeasurements(const string fileName) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
 list<Device*> System::getDevices() const {
@@ -285,7 +340,7 @@ list<Sensor*> System::getSensors() const {
     return sensors;
 }
 
-list<Cleaner*> System::getCleaners() const{
+list<Cleaner*> System::getCleaners() const {
     list<Cleaner*> cleaners;
     for (const auto & device : devices) {
         if (Cleaner* cleaner = dynamic_cast<Cleaner*>(device)) {
@@ -317,12 +372,28 @@ list<Sensor*> System::getFunctionalSensors() const {
     return sensors;
 }
 
-void System::blacklistSensor (Sensor *s){
+void System::blacklistSensor(Sensor *s) {
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     s->setBlacklistedSensor(true);
     blacklistedSensors.push_back(s);
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution blacklistSensor(Sensor *s) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
-void System::unBlacklistSensor (Sensor *s){
+void System::unBlacklistSensor(Sensor *s) {
+
+    #ifdef PERF
+        auto start = chrono::high_resolution_clock::now();
+    #endif
+
     s->setBlacklisted(false);
     blacklistedSensors.remove(s);
     PrivateUser* user =s->getPrivateUser();
@@ -343,9 +414,15 @@ void System::unBlacklistSensor (Sensor *s){
             s->setBlacklisted(true);
         }
     }
+
+    #ifdef PERF
+        auto end = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+        cout << "Temps d'exécution unBlacklistSensor(Sensor *s) : " << duration.count() << " ms" << endl;
+    #endif
 }
 
-Sensor* System::getSensorsByName(string n){
+Sensor* System::getSensorsByName(string n) {
     Sensor* s;
     for(const auto & sensor : getSensors()){
         if(sensor->getName()==n){

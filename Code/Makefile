@@ -9,14 +9,25 @@
 # option debug : yes/no
 # permet utilisation gdb et affichage méthodes appelées
 DEBUG = no
+PERFORMANCE = no
 
 CXX = g++
 ifeq ($(DEBUG),yes)
+	ifeq ($(PERFORMANCE),yes)
+	CXXFLAGS = -ansi -pedantic -Wall -std=c++11 -g -DMAP -DPERF
+	LDFLAGS = -DMAP -DPERF
+	else
 	CXXFLAGS = -ansi -pedantic -Wall -std=c++11 -g -DMAP
 	LDFLAGS = -DMAP
+	endif
 else
+	ifeq ($(PERFORMANCE),yes)
+	CXXFLAGS = -ansi -pedantic -Wall -std=c++11 -DPERF
+	LDFLAGS = -DPERF
+	else
 	CXXFLAGS = -ansi -pedantic -Wall -std=c++11
 	LDFLAGS =
+	endif
 endif
 
 EXECDIR = bin/
