@@ -50,7 +50,7 @@ PrivateUser::~PrivateUser() {
 //------------------------------------------------- Surcharge d'opérateurs
 
 ostream & operator << (ostream & os, const PrivateUser &u) {
-    os << u.name << "; blacklisted : "<<u.blacklisted<<"; points : "<< u.points <<";Sensors :"<<u.getSensorsName();
+    os << u.name << "; blacklisted: " << u.blacklisted << "; points: " << u.points << "; Sensors:" << u.getSensorsName() << ";" << endl;
     return os;
 }
 

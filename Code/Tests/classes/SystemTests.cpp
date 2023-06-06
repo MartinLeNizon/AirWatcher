@@ -39,7 +39,7 @@ void printList(list<T*> lst) {  /*Méthode générique permettant d'afficher n'i
 
 int main(int argc, char * argv[]){
 
-    assert(argc > 2);
+    assert(argc >= 2);
 
     string argument = argv[1];
 
@@ -60,7 +60,7 @@ int main(int argc, char * argv[]){
 
     } else if (argument =="BlacklistSensor1"){
 
-        // Récupération du Sensor100 puis ne le blackliste
+        // Récupération du Sensor1 puis ne le blackliste
         Sensor* sensor = s.getSensorsByName("Sensor1");
         s.blacklistSensor(sensor);
 
@@ -69,11 +69,11 @@ int main(int argc, char * argv[]){
 
     } else if (argument =="UnBlacklistSensor1"){
 
-        // Récupération du Sensor100 puis ne le blackliste
+        // Récupération du Sensor1 puis ne le blackliste
         Sensor* sensor = s.getSensorsByName("Sensor1");
         s.blacklistSensor(sensor);
 
-        // On unblackliste le Sensor100
+        // On unblackliste le Sensor1
         s.unBlacklistSensor(sensor);
 
         //Affichage des Sensors fonctionnels

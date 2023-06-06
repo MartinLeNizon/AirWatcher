@@ -27,6 +27,14 @@ OBJDIR = obj/
 OBJ = $(SRC:$(SRCDIR)%.cpp=$(OBJDIR)%.o)
 
 
+
+# TEST
+TESTDIR = Tests/classes/
+TESTSRC = $(wildcard $(TESTDIR)*.cpp)
+TESTOBJ = $(TESTSRC:%.cpp=%.o)
+TEST = $(TESTSRC:%.cpp=%)
+
+
 all: $(EXEC) $(TEST)
 
 ifeq ($(DEBUG),yes)
@@ -35,12 +43,6 @@ else
 	@echo "Mode release"
 endif
 
-
-# TEST
-TESTDIR = Tests/classes/
-TESTSRC = $(wildcard $(TESTDIR)*.cpp)
-TESTOBJ = $(TESTSRC:%.cpp=%.o)
-TEST = $(TESTSRC:%.cpp=%)
 
 $(TESTDIR)StatisticsServicesTests: $(TESTDIR)StatisticsServicesTests.o $(filter-out $(OBJDIR)main.o, $(OBJ))
 	@$(CXX) -o $@ $^ $(LDFLAGS)
@@ -89,9 +91,9 @@ $(OBJDIR)%.o: $(SRCDIR)%.cpp Makefile
 .PHONY:clean mrproper
 
 clean:
-	@rm -rf $(OBJ) $(TESTDIR)StatisticsServicesTests.o
+	@rm -rf $(OBJ) $(TESTOBJ)
 	@echo "Fichiers objets supprimés"
 
 mrproper: clean
-	@rm -rf $(EXEC) $(TESTDIR)StatisticsServicesTests.o $(TESTDIR)StatisticsServicesTests
+	@rm -rf $(EXEC) $(TEST)
 	@echo "Fichiers objets et exécutable(s) supprimés"
