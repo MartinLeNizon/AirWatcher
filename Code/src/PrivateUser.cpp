@@ -50,7 +50,7 @@ PrivateUser::~PrivateUser() {
 //------------------------------------------------- Surcharge d'opérateurs
 
 ostream & operator << (ostream & os, const PrivateUser &u) {
-    os << u.name << "; blacklisted: " << u.blacklisted << "; points: " << u.points << "; Sensors:" << u.getSensorsName() << ";" << endl;
+    os << u.name << "; blacklisted: " << u.blacklisted << "; points: " << u.points << "; Sensors: " << u.getSensorsName() << ";";
     return os;
 }
 
@@ -62,7 +62,7 @@ string PrivateUser::getSensorsName() const {
     
     for (const auto& elem : sensors) {
         if(nbSensor!=0){
-            listeSensors+="|";
+            listeSensors+=" | ";
         }
         listeSensors+=elem->getName();
         nbSensor++;
