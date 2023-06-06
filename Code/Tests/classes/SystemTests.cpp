@@ -78,7 +78,6 @@ int main(int argc, char * argv[]){
 
         //Affichage des Sensors fonctionnels
         printList(s.getFunctionalSensors());
-
     }
 
         

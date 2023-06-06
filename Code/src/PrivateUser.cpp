@@ -26,7 +26,7 @@ PrivateUser::PrivateUser() {
 #endif
 }
 
-PrivateUser :: PrivateUser(string name, Sensor* monSensor) : User(name) {
+PrivateUser::PrivateUser(string name, Sensor* monSensor) : User(name) {
     addSensor(monSensor);
     points=0;
     blacklisted=0;

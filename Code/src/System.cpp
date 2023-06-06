@@ -285,7 +285,7 @@ list<Sensor*> System::getSensors() const {
     return sensors;
 }
 
-list<Cleaner*> System :: getCleaners() const{
+list<Cleaner*> System::getCleaners() const{
     list<Cleaner*> cleaners;
     for (const auto & device : devices) {
         if (Cleaner* cleaner = dynamic_cast<Cleaner*>(device)) {
@@ -295,7 +295,7 @@ list<Cleaner*> System :: getCleaners() const{
     return cleaners;
 }
 
-list<PrivateUser*> System :: getPrivateUsers() const {
+list<PrivateUser*> System::getPrivateUsers() const {
     list<PrivateUser*> pUsers;
     for (const auto & elem : users) {
         if (PrivateUser* pu = dynamic_cast<PrivateUser*>(elem)) {
@@ -317,12 +317,12 @@ list<Sensor*> System::getFunctionalSensors() const {
     return sensors;
 }
 
-void System :: blacklistSensor (Sensor *s){
+void System::blacklistSensor (Sensor *s){
     s->setBlacklistedSensor(true);
     blacklistedSensors.push_back(s);
 }
 
-void System :: unBlacklistSensor (Sensor *s){
+void System::unBlacklistSensor (Sensor *s){
     s->setBlacklisted(false);
     blacklistedSensors.remove(s);
     PrivateUser* user =s->getPrivateUser();
@@ -345,7 +345,7 @@ void System :: unBlacklistSensor (Sensor *s){
     }
 }
 
-Sensor* System :: getSensorsByName(string n){
+Sensor* System::getSensorsByName(string n){
     Sensor* s;
     for(const auto & sensor : getSensors()){
         if(sensor->getName()==n){
@@ -355,10 +355,3 @@ Sensor* System :: getSensorsByName(string n){
     }
     return s;
 }
-
-
-/*void System::displaySensors() const {
-    for (const auto & s : devices) {
-        if (typeid(*s).name()=="6Sensor") cout << *s << endl;
-    }
-}*/

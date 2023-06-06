@@ -96,4 +96,4 @@ clean:
 
 mrproper: clean
 	@rm -rf $(EXEC) $(TEST)
-	@echo "Fichiers objets et exécutable(s) supprimés"
+	@echo "Exécutable(s) supprimés"

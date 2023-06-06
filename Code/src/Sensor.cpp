@@ -22,7 +22,7 @@ Sensor::Sensor() {
     blacklisted = false;
 }
 
-Sensor::Sensor (string nom, Coordinates pos) : Device(nom,pos) {
+Sensor::Sensor(string nom, Coordinates pos) : Device(nom,pos) {
 #ifdef MAP
     cout << "Appel au constructeur de <Sensor>" << endl;
 #endif
