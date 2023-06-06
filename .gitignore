@@ -28,7 +28,7 @@
 
 # Executables
 *.exe
-*.out
+# *.out # Nécessaires sorties des tests
 *.app
 airwatcher
 airwatcher.exe
