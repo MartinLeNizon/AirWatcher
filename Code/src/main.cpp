@@ -70,7 +70,7 @@ int main(int argc, char * argv[]){
     cout <<endl;
 
     cout << "---------------------------------------------------------------------------"<<endl;
-    cout << "Affichage de la liste des Sensors oprérationnels après avoir blacklisté le sensor 100"<<endl;
+    cout << "Affichage de la liste des Sensors opérationnels après avoir blacklisté le sensor 100"<<endl;
     cout << "Saisissez un caractére pour continuer :";
     cin>>pause;
     cout <<endl;
@@ -82,7 +82,7 @@ int main(int argc, char * argv[]){
     cout <<endl;
 
     cout << "---------------------------------------------------------------------------"<<endl;
-    cout << "Affichage de la liste des Sensors oprérationnels après avoir unblacklisté le sensor 100"<<endl;
+    cout << "Affichage de la liste des Sensors opérationnels après avoir unblacklisté le sensor 100"<<endl;
     cout << "Saisissez un caractére pour continuer :";
     cin>>pause;
     cout <<endl;
@@ -93,7 +93,7 @@ int main(int argc, char * argv[]){
     cout <<endl;
 
     cout << "---------------------------------------------------------------------------"<<endl;
-    cout << "Affichage de la liste des Sensors oprérationnels après avoir blacklisté le sensor 15 (quelconque)"<<endl;
+    cout << "Affichage de la liste des Sensors opérationnels après avoir blacklisté le sensor 15 (quelconque)"<<endl;
     cout << "Saisissez un caractére pour continuer :";
     cin>>pause;
     cout <<endl;
@@ -105,7 +105,7 @@ int main(int argc, char * argv[]){
     cout <<endl;
 
     cout << "---------------------------------------------------------------------------"<<endl;
-    cout << "Affichage de la liste des Sensors oprérationnels après avoir unblacklisté le sensor 100"<<endl;
+    cout << "Affichage de la liste des Sensors opérationnels après avoir unblacklisté le sensor 100"<<endl;
     cout << "Saisissez un caractére pour continuer :";
     cin>>pause;
     cout <<endl;
