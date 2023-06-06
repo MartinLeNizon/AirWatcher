@@ -131,8 +131,10 @@ int main(int argc, char * argv[]){
     cout <<endl;
 
     cout << "---------------------------------------------------------------------------"<<endl;
-    cout << "Affichage de la moyenne des mesures prises dans la zone "<<endl;
+    cout << "Affichage de la moyenne des mesures prises dans la zone de coordonnées (44.8 ; 1.8) avec un rayon de 1 "<<endl;
     cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
     Coordinates coord;
     coord.latitude=44.4;
     coord.longitude=1.8;
@@ -140,10 +142,28 @@ int main(int argc, char * argv[]){
     z.center=coord;
     z.radius=1;
     string dateStr = "2019-03-01 00:00:00";
-    ss.getAverageAirQuality(s.getFunctionalSensors(),z, (time_t) stringToTime_t(dateStr));
-    cin>>pause;
+    v = ss.getAverageAirQuality(s.getFunctionalSensors(),z, (time_t) stringToTime_t(dateStr));
+
+    cout <<endl;
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
     cout <<endl;
 
+
+    cout << "---------------------------------------------------------------------------"<<endl;
+    cout << "Affichage de la moyenne des mesures prises dans la zone de coordonnées (44.8 ; 1.8) avec un rayon de 0.5 "<<endl;
+    cout << "Saisissez un caractére pour continuer :";
+    cin>>pause;
+    cout <<endl;
+    coord.latitude=44.4;
+    coord.longitude=1.8;
+    z.center=coord;
+    z.radius=0.5;
+    dateStr = "2019-03-01 00:00:00";
+    v = ss.getAverageAirQuality(s.getFunctionalSensors(),z, (time_t) stringToTime_t(dateStr));
+
+    cout <<endl;
+    cout << "Qualité de l'air moyen" << endl << "O3 : " << v.o3 << " ; NO2 : " <<  v.no2 << " ; SO2 : " <<  v.so2 << " ; PM10 : " <<  v.pm10 << endl;
+    cout <<endl;
 
     return 0;
 }
